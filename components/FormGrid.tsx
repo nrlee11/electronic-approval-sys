@@ -7,7 +7,7 @@ interface FormCardProps {
 
 const FormCard: React.FC<FormCardProps> = ({ form }) => {
   return (
-    <div className="group bg-card radius-lg border border-border overflow-hidden h-44 flex flex-col hover:border-primary cursor-pointer transition">
+    <div className="group bg-card radius- border border-border overflow-hidden h-44 flex flex-col hover:border-primary cursor-pointer transition">
       <div className="bg-muted  border-b border-border p-3 h-[64px] flex items-center justify-center text-center transition-colors group-hover:bg-primary/20">
         <span className="text-[13px] font-bold text-foreground leading-tight break-keep">
           {form.title}
@@ -25,7 +25,7 @@ const FormCard: React.FC<FormCardProps> = ({ form }) => {
 interface FormGridProps {
   forms: DraftForm[];
 }
-테스트;
+
 const FormGrid: React.FC<FormGridProps> = ({ forms }) => {
   return (
     <div className="grid grid-cols-7 gap-4">
