@@ -125,7 +125,7 @@ const Sidebar: React.FC<{ onNavigate?: (page: string) => void }> = ({
       </nav>
 
       {/* Footer Nav */}
-      <div className="p-6 border-t border-border">
+      {/* <div className="p-6 border-t border-border">
         <h4 className="text-xs font-bold text-foreground mb-4">이용안내</h4>
         <ul className="space-y-3">
           <li>
@@ -153,7 +153,7 @@ const Sidebar: React.FC<{ onNavigate?: (page: string) => void }> = ({
             </a>
           </li>
         </ul>
-      </div>
+      </div> */}
     </aside>
   );
 };
