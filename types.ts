@@ -43,3 +43,8 @@ export interface SubNavItem {
   label: string;
   active?: boolean;
 }
+export enum PublicStatus {
+  DEPARTMENT = '부서공개',
+  PRIVATE = '비공개',
+  COMPANY = '전사공개'
+}

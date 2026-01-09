@@ -5,6 +5,7 @@ import EmptyState from "./components/EmptyState";
 import SubmittedDocuments from "./pages/SubmittedDocuments";
 import PendingApprovals from "./pages/PendingApprovals";
 import FormLibrary from "./pages/FormLibrary";
+import BusinessDraft from "./pages/BusinessDraft";
 import { UserInfo, TabType, StatusCount } from "./types";
 import { Button } from "./components/ui/button"; // Example usage of the Button component
 import {
@@ -18,7 +19,7 @@ import {
   TableCaption,
 } from "@/components/ui/table";
 
-type PageType = "dashboard" | "submitted" | "approval" | "forms";
+type PageType = "dashboard" | "submitted" | "approval" | "forms" | "business-draft";
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<PageType>("dashboard");
@@ -152,11 +153,10 @@ const App: React.FC = () => {
                         <button
                           key={tab.id}
                           onClick={() => setActiveTab(tab.id)}
-                          className={`typo-tab px-6 py-4 transition-colors relative ${
-                            isActive
+                          className={`typo-tab px-6 py-4 transition-colors relative ${isActive
                               ? "text-primary"
                               : "text-muted-foreground hover:text-foreground"
-                          }`}
+                            }`}
                         >
                           {tab.label}
                           {isActive && (
@@ -219,7 +219,16 @@ const App: React.FC = () => {
             ) : currentPage === "approval" ? (
               <PendingApprovals onBack={() => setCurrentPage("dashboard")} />
             ) : currentPage === "forms" ? (
-              <FormLibrary onBack={() => setCurrentPage("dashboard")} />
+              <FormLibrary
+                onBack={() => setCurrentPage("dashboard")}
+                onFormSelect={(formId) => {
+                  if (formId === "1") {
+                    setCurrentPage("business-draft");
+                  }
+                }}
+              />
+            ) : currentPage === "business-draft" ? (
+              <BusinessDraft onBack={() => setCurrentPage("forms")} />
             ) : null}
           </div>
         </main>

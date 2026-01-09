@@ -3,7 +3,12 @@ import React from "react";
 import FormGrid from "../components/FormGrid";
 import { DRAFT_FORMS } from "../constants";
 
-const App: React.FC = () => {
+interface FormLibraryProps {
+  onBack: () => void;
+  onFormSelect?: (formId: string) => void;
+}
+
+const FormLibrary: React.FC<FormLibraryProps> = ({ onBack, onFormSelect }) => {
   return (
     <div className="flex flex-col h-screen overflow-hidden text-foreground">
       <div className="flex flex-1 overflow-hidden">
@@ -23,7 +28,7 @@ const App: React.FC = () => {
                 </div>
               </div>
 
-              <FormGrid forms={DRAFT_FORMS} />
+              <FormGrid forms={DRAFT_FORMS} onFormClick={onFormSelect} />
             </section>
             {/* Footer */}
             <footer className="mt-16 pt-8 pb-10 flex flex-col md:flex-row justify-between items-center typo-kicker text-muted-foreground gap-4">
@@ -48,4 +53,4 @@ const App: React.FC = () => {
   );
 };
 
-export default App;
+export default FormLibrary;
