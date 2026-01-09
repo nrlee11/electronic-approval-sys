@@ -7,8 +7,8 @@ interface FormCardProps {
 
 const FormCard: React.FC<FormCardProps> = ({ form }) => {
   return (
-    <div className="group bg-card radius- border border-border overflow-hidden h-44 flex flex-col hover:border-primary cursor-pointer transition">
-      <div className="bg-muted  border-b border-border p-3 h-[64px] flex items-center justify-center text-center transition-colors group-hover:bg-primary/20">
+    <div className="group bg-card radius-sm border border-border overflow-hidden h-44 flex flex-col hover:border-primary cursor-pointer transition">
+      <div className="bg-muted border-b border-border p-3 h-[64px] flex items-center justify-center text-center transition-colors">
         <span className="text-[13px] font-bold text-foreground leading-tight break-keep">
           {form.title}
         </span>

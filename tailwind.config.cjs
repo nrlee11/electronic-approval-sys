@@ -33,6 +33,25 @@ module.exports = {
         "3xl": "var(--radius-3xl)",
         "4xl": "var(--radius-4xl)",
       },
+      fontWeight: {
+        light: "var(--font-weight-light)",
+        regular: "var(--font-weight-regular)",
+        medium: "var(--font-weight-medium)",
+        semibold: "var(--font-weight-semibold)",
+        bold: "var(--font-weight-bold)",
+      },
+
+      fontSize: {
+        xs: "var(--font-size-xs)",
+        sm: "var(--font-size-sm)",
+        md: "var(--font-size-md)",
+        lg: "var(--font-size-lg)",
+        xl: "var(--font-size-xl)",
+        "2xl": "var(--font-size-2xl)",
+        "3xl": "var(--font-size-3xl)",
+      },
+      // styles/tokens.css 에서 정의한 값들
+      //
       // ✅ shadcn 스타일처럼 “시맨틱 컬러 이름”을 토큰에 연결
       colors: {
         background: "var(--background)",

@@ -39,7 +39,7 @@
   --typo-body-weight: var(--font-weight-regular);
   --typo-body-leading: var(--line-height-normal);
 
-  --typo-tab-size: var(--font-size-md);
+  --typo-tab-size: var(--font-size-sm);
   --typo-tab-weight: var(--font-weight-semibold);
   --typo-tab-leading: var(--line-height-normal);
 
