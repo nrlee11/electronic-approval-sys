@@ -13,7 +13,7 @@ function Input({ className, type, ...props }: React.ComponentProps<"input">) {
       className={cn(
         [
           // layout & sizing
-          "flex h-9 w-full min-w-0 px-2.5 py-1",
+          "flex h-8 w-full min-w-0 px-2.5 py-1",
           "text-sm",
 
           // surface
@@ -26,8 +26,8 @@ function Input({ className, type, ...props }: React.ComponentProps<"input">) {
 
           // focus (회사 표준)
           "focus-visible:outline-none",
-          "focus-visible:ring-1 focus-visible:ring-ring",
-          "focus-visible:ring-offset-background",
+          "focus-visible:ring-2 focus-visible:ring-ring",
+          "focus-visible:ring-offset-2 focus-visible:ring-offset-background",
           "focus-visible:border-ring",
 
           // invalid

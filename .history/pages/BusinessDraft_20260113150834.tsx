@@ -14,8 +14,8 @@ const App: React.FC = () => {
 
                     {/* Sticky Footer */}
                     <div className="fixed bottom-0 left-0 right-0 bg-background backdrop-blur-md border-t border-border p-6 flex justify-center gap-4 z-40 shadow-[0_-10px_30px_rgba(0,0,0,0.03)]">
-                        <Button variant="secondary" size="lg">임시저장</Button>
-                        <Button size="lg">상신하기</Button>
+                        <Button variant="secondary">임시저장</Button>
+                        <Button>상신하기</Button>
                     </div>
                 </main>
             </div>

@@ -13,9 +13,11 @@ const App: React.FC = () => {
                     </div>
 
                     {/* Sticky Footer */}
-                    <div className="fixed bottom-0 left-0 right-0 bg-background backdrop-blur-md border-t border-border p-6 flex justify-center gap-4 z-40 shadow-[0_-10px_30px_rgba(0,0,0,0.03)]">
-                        <Button variant="secondary" size="lg">임시저장</Button>
-                        <Button size="lg">상신하기</Button>
+                    <div className="fixed bottom-0 left-64 right-0 bg-background/80 backdrop-blur-md border-t border-border p-6 flex justify-center gap-4 z-40 shadow-[0_-10px_30px_rgba(0,0,0,0.03)]">
+                        <Button>임시저장</Button>
+                        <button className="px-16 py-3.5 bg-primary text-primary-foreground rounded-lg font-bold hover:bg-primary-hover transition-all shadow-lg shadow-primary/20 active:scale-95">
+                            상신하기
+                        </button>
                     </div>
                 </main>
             </div>

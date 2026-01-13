@@ -211,15 +211,15 @@ const DraftForm: React.FC = () => {
             </label>
             <div className="relative">
               <Input className="flex-1" placeholder="기안제목을 입력해 주세요" type="text" />
-              {/* <input
+              <input
                 value={title}
                 onChange={(e) => setTitle(e.target.value.slice(0, 50))}
                 className="w-full border-border rounded-lg py-2.5 px-4 text-sm focus:ring-primary focus:border-primary placeholder-muted-foreground/50 shadow-sm"
                 placeholder="기안제목을 입력해 주세요"
                 type="text"
-              /> */}
+              />
               <span className="absolute right-4 top-1/2 -translate-y-1/2 text-[11px] text-muted-foreground font-medium">
-                {title.length}/50
+                {title.length}/49
               </span>
             </div>
           </div>

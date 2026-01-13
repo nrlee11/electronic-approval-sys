@@ -26,7 +26,7 @@ function Input({ className, type, ...props }: React.ComponentProps<"input">) {
 
           // focus (회사 표준)
           "focus-visible:outline-none",
-          "focus-visible:ring-1 focus-visible:ring-ring",
+          "focus-visible:ring-2 focus-visible:ring-ring",
           "focus-visible:ring-offset-background",
           "focus-visible:border-ring",
 
