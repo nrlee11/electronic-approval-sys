@@ -7,7 +7,6 @@ import {
   FileSearch,
   Trash2,
 } from "lucide-react";
-import { PublicStatus } from "../types";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -24,9 +23,6 @@ import * as Icons from "@hugeicons/core-free-icons";
 
 const DraftForm: React.FC = () => {
   const [title, setTitle] = useState("");
-  const [publicStatus, setPublicStatus] = useState<PublicStatus>(
-    PublicStatus.DEPARTMENT
-  );
 
   return (
     <div className="max-w-6xl mx-auto space-y-10">
@@ -101,9 +97,7 @@ const DraftForm: React.FC = () => {
               </td>
             </tr>
             <tr>
-              <th className="p-3.5 text-left border-r border-border">
-                기안자
-              </th>
+              <th className="p-3.5 text-left border-r border-border">기안자</th>
               <td className="p-3.5 border-r border-border">이나라 (nrlee)</td>
               <th className="p-3.5 text-left border-r border-border">
                 기안부서 <span className="text-destructive">*</span>
@@ -167,7 +161,9 @@ const DraftForm: React.FC = () => {
             </div>
             <div className="h-28 flex flex-col items-center justify-center text-center p-3">
               <span className="text-sm font-bold text-foreground">이나라</span>
-              <span className="text-[11px] text-muted-foreground mt-0.5">(nrlee)</span>
+              <span className="text-[11px] text-muted-foreground mt-0.5">
+                (nrlee)
+              </span>
               <div className="w-full h-px bg-border my-2"></div>
               <span className="text-[11px] text-muted-foreground font-medium">
                 디자인팀
@@ -210,7 +206,11 @@ const DraftForm: React.FC = () => {
               기안제목 <span className="text-destructive">*</span>
             </label>
             <div className="relative">
-              <Input className="flex-1" placeholder="기안제목을 입력해 주세요" type="text" />
+              <Input
+                className="flex-1"
+                placeholder="기안제목을 입력해 주세요"
+                type="text"
+              />
               {/* <input
                 value={title}
                 onChange={(e) => setTitle(e.target.value.slice(0, 50))}
