@@ -166,7 +166,7 @@ const DocumentDetail: React.FC<DocumentDetailProps> = ({ onBack }) => {
         </div>
         <div className="border border-border rounded-sm">
           <div className="grid grid-cols-12 border-b border-border">
-            <div className="col-span-2 bg-muted font-medium text-muted-foreground p-3 text-sm border-r border-border flex items-center justify-center">기안제목</div>
+            <div className="col-span-2 bg-muted/40 p-3 text-sm font-medium text-muted-foreground border-r border-border flex items-center justify-center">기안제목</div>
             <div className="col-span-10 p-3 text-sm flex items-center font-medium">디자인시스템 개발 요청</div>
           </div>
           <div className="p-6 text-sm min-h-[300px]">
