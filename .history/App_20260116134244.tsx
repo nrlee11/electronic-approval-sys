@@ -10,7 +10,6 @@ import ApprovalRejected from "./pages/ApprovalRejected";
 import PendingReceipt from "./pages/PendingReceipt";
 import ReceiptCompleted from "./pages/ReceiptCompleted";
 import DocumentRegister from "./pages/DocumentRegister";
-import DocumentDetail from "./pages/DocumentDetail";
 import FormLibrary from "./pages/FormLibrary";
 import BusinessDraft from "./pages/BusinessDraft";
 import CompletedDocuments from "./pages/CompletedDocuments";
@@ -31,7 +30,7 @@ import {
   TableCaption,
 } from "@/components/ui/table";
 
-type PageType = "dashboard" | "submitted" | "approval" | "approval-progress" | "approval-completed" | "approval-rejected" | "forms" | "business-draft" | "completed" | "saved" | "rejected" | "returned" | "retrieved" | "pending-receipt" | "receipt-completed" | "document-register" | "document-detail";
+type PageType = "dashboard" | "submitted" | "approval" | "approval-progress" | "approval-completed" | "approval-rejected" | "forms" | "business-draft" | "completed" | "saved" | "rejected" | "returned" | "retrieved" | "document-register";
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<PageType>("dashboard");
@@ -68,8 +67,6 @@ const App: React.FC = () => {
         setCurrentPage("receipt-completed");
       } else if (hash === "/document-register" || hash === "document-register") {
         setCurrentPage("document-register");
-      } else if (hash === "/document-detail" || hash === "document-detail") {
-        setCurrentPage("document-detail");
       } else {
         setCurrentPage("dashboard");
       }
@@ -266,8 +263,6 @@ const App: React.FC = () => {
               <ReceiptCompleted onBack={() => setCurrentPage("dashboard")} />
             ) : currentPage === "document-register" ? (
               <DocumentRegister onBack={() => setCurrentPage("dashboard")} />
-            ) : currentPage === "document-detail" ? (
-              <DocumentDetail onBack={() => window.history.back()} />
             ) : currentPage === "forms" ? (
               <FormLibrary
                 onBack={() => setCurrentPage("dashboard")}

@@ -25,7 +25,7 @@ const NavItem: React.FC<NavItemProps> = ({
           if (hasSub) setIsExpanded(!isExpanded);
           else onClick?.();
         }}
-        className="w-full border-b border-border flex items-center justify-between px-6 py-3 text-sm text-muted-foreground hover:bg-muted/60 hover:text-primary transition-all group hover:underline"
+        className="w-full flex items-center justify-between px-6 py-3 text-sm text-muted-foreground hover:bg-muted/60 hover:text-primary transition-all group hover:underline"
       >
         <span className="font-medium">{label}</span>
         {hasSub && (
@@ -37,7 +37,7 @@ const NavItem: React.FC<NavItemProps> = ({
         )}
       </button>
       {hasSub && isExpanded && subItems.length > 0 && (
-        <ul className="bg-muted py-5">
+        <ul className="bg-muted py-5 border-b border-border">
           {subItems.map((subItem) => (
             <li key={subItem}>
               <button

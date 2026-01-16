@@ -14,7 +14,6 @@ const NavItem: React.FC<NavItemProps> = ({
   hasSub = false,
   subItems = [],
   onSubItemClick,
-  onClick,
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -25,7 +24,7 @@ const NavItem: React.FC<NavItemProps> = ({
           if (hasSub) setIsExpanded(!isExpanded);
           else onClick?.();
         }}
-        className="w-full border-b border-border flex items-center justify-between px-6 py-3 text-sm text-muted-foreground hover:bg-muted/60 hover:text-primary transition-all group hover:underline"
+        className="w-full flex items-center justify-between px-6 py-3 text-sm text-muted-foreground hover:bg-muted/60 hover:text-primary transition-all group hover:underline"
       >
         <span className="font-medium">{label}</span>
         {hasSub && (
