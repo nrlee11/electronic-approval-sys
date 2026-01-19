@@ -24,7 +24,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({ onSearch }) => {
           <label className="w-24 text-sm font-medium text-foreground">
             상신일
           </label>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <div className="relative">
               <Input className="w-32"></Input>
               <span className="material-icons-outlined absolute right-2 top-1.5 text-muted-foreground text-base"></span>
@@ -62,7 +62,6 @@ const FilterSection: React.FC<FilterSectionProps> = ({ onSearch }) => {
               <DropdownMenuContent className="bg-background w-72">
                 <DropdownMenuGroup>
                   <DropdownMenuLabel>전체</DropdownMenuLabel>
-
                   <DropdownMenuItem>업무기안</DropdownMenuItem>
                   <DropdownMenuItem>업무협조</DropdownMenuItem>
                   <DropdownMenuItem>지출결의서(기본형)</DropdownMenuItem>

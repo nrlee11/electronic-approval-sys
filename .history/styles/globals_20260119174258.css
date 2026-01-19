@@ -1,0 +1,86 @@
+@import "./tokens.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: var(--font-sans-base);
+  background-color: var(--background);
+  color: var(--foreground);
+
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  border-width: var(--border-width-default);
+  border-style: solid;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+}
+
+@layer components {
+  .typo-title {
+    font-size: var(--typo-title-size);
+    font-weight: var(--typo-title-weight);
+    line-height: var(--typo-title-leading);
+  }
+
+  .typo-body {
+    font-size: var(--typo-body-size);
+    font-weight: var(--typo-body-weight);
+    line-height: var(--typo-body-leading);
+  }
+  .typo-tab {
+    font-size: var(--typo-tab-size);
+    font-weight: var(--typo-tab-weight);
+    line-height: var(--typo-tab-leading);
+  }
+
+  .typo-caption {
+    font-size: var(--typo-caption-size);
+    font-weight: var(--typo-caption-weight);
+    line-height: var(--typo-caption-leading);
+  }
+
+  .typo-kicker {
+    font-size: var(--typo-kicker-size);
+    font-weight: var(--typo-kicker-weight);
+    line-height: var(--typo-kicker-leading);
+    letter-spacing: 0.02em;
+  }
+}
+@layer utilities {
+  .radius-sm {
+    border-radius: var(--radius-sm);
+  }
+  .radius-md {
+    border-radius: var(--radius-md);
+  }
+  .radius-lg {
+    border-radius: var(--radius-lg);
+  }
+  .radius-xl {
+    border-radius: var(--radius-xl);
+  }
+  .radius-2xl {
+    border-radius: var(--radius-2xl);
+  }
+  .radius-3xl {
+    border-radius: var(--radius-3xl);
+  }
+  .radius-4xl {
+    border-radius: var(--radius-4xl);
+  }
+}
