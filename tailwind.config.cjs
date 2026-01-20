@@ -70,8 +70,8 @@ module.exports = {
         primary: "var(--primary)",
         "primary-foreground": "var(--primary-foreground)",
         "primary-hover": "var(--primary-hover)",
-        "primary-disabled": "var(--primary-disabled)",
-        "primary-disabled-foreground": "var(--primary-disabled-foreground)",
+        disabled: "var(--disabled)",
+        "disabled-foreground": "var(--disabled-foreground)",
 
         secondary: "var(--secondary)",
         "secondary-foreground": "var(--secondary-foreground)",

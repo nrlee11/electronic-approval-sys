@@ -13,7 +13,7 @@ const buttonVariants = cva(
     "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none shrink-0",
     // interaction
     "transition-colors",
-    "disabled:pointer-events-none disabled:opacity-50",
+    "disabled:pointer-events-none",
     // focus (회사 토큰: --ring, --background)
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
     // border baseline (variant에서 주로 제어)
@@ -22,8 +22,10 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: ["bg-primary text-primary-foreground hover:bg-primary-hover",
-        "disabled:bg-primary-disabled disabled:text-primary-disabled-foreground"],
+        default: [
+          "bg-primary text-primary-foreground hover:bg-primary-hover",
+          "disabled:bg-disabled disabled:text-disabled-foreground",
+        ],
 
         secondary:
           "bg-secondary text-secondary-foreground hover:bg-accent hover:text-accent-foreground",
@@ -35,7 +37,7 @@ const buttonVariants = cva(
           "bg-transparent text-foreground hover:bg-accent hover:text-accent-foreground",
 
         destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+          "bg-destructive text-destructive-foreground hover:bg-destructive/70",
 
         link: "bg-transparent text-primary underline-offset-4 hover:underline",
       },
@@ -56,7 +58,7 @@ const buttonVariants = cva(
       variant: "default",
       size: "default",
     },
-  }
+  },
 );
 
 function Button({
