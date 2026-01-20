@@ -44,10 +44,9 @@ function Input({ className, type, ...props }: React.ComponentProps<"input">) {
 
           // motion
           "transition-colors",
-
         ].join(" "),
 
-        className
+        className,
       )}
       {...props}
     />

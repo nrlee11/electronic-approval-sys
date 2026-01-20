@@ -50,7 +50,7 @@ function DropdownMenuContent({
             // motion (있으면 쓰고, 없어도 문제 없음)
             "data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95",
             "outline-none",
-            className
+            className,
           )}
           {...props}
         />
@@ -75,7 +75,7 @@ function DropdownMenuLabel({
       className={cn(
         "px-2 py-1.5 text-xs font-medium text-muted-foreground",
         "data-[inset]:pl-8",
-        className
+        className,
       )}
       {...props}
     />
@@ -111,7 +111,7 @@ function DropdownMenuItem({
         "[&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0 [&_svg]:pointer-events-none",
         // destructive variant
         "data-[variant=destructive]:text-destructive data-[variant=destructive]:focus:bg-destructive/10 data-[variant=destructive]:focus:text-destructive",
-        className
+        className,
       )}
       {...props}
     />
@@ -140,7 +140,7 @@ function DropdownMenuSubTrigger({
         "data-disabled:pointer-events-none data-disabled:opacity-50",
         "data-[inset]:pl-8",
         "[&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0 [&_svg]:pointer-events-none",
-        className
+        className,
       )}
       {...props}
     >
@@ -191,7 +191,7 @@ function DropdownMenuCheckboxItem({
         "outline-none",
         "focus:bg-accent focus:text-accent-foreground",
         "data-disabled:pointer-events-none data-disabled:opacity-50",
-        className
+        className,
       )}
       {...props}
     >
@@ -231,7 +231,7 @@ function DropdownMenuRadioItem({
         "outline-none",
         "focus:bg-accent focus:text-accent-foreground",
         "data-disabled:pointer-events-none data-disabled:opacity-50",
-        className
+        className,
       )}
       {...props}
     >
@@ -270,7 +270,7 @@ function DropdownMenuShortcut({
       data-slot="dropdown-menu-shortcut"
       className={cn(
         "ml-auto text-xs text-muted-foreground tracking-widest",
-        className
+        className,
       )}
       {...props}
     />
