@@ -11,35 +11,37 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { HugeiconsIcon } from "@hugeicons/react";
 import * as Icons from "@hugeicons/core-free-icons";
-interface FilterSectionProps {
+interface   AdminFilterSectionProps {
   onSearch: () => void;
 }
 
-const FilterSection: React.FC<FilterSectionProps> = ({ onSearch }) => {
+const AdminFilterSection: React.FC<AdminFilterSectionProps> = ({ onSearch }) => {
   return (
     <div className="bg-card rounded-sm border-t border-b border-border py-8 px-4 mb-6">
       <div className="flex flex-col gap-6">
         {/* Row 1: Date range */}
-       <div className="flex items-center flex-1">
-          <label className="w-24 text-sm font-medium text-foreground">
-            상신일
-          </label>
-          <div className="flex items-center gap-[11px]">
-            <div className="relative">
-              <Input className="w-32"></Input>
-              <span className="material-icons-outlined absolute right-2 top-1.5 text-muted-foreground text-base"></span>
-            </div>
-            <span className="text-muted-foreground">~</span>
-            <div className="relative">
-              <Input className="w-32"></Input>
-              <span className="material-icons-outlined absolute right-2 top-1.5 text-muted-foreground text-base"></span>
+        <div className="flex items-center">
+          <div className="flex items-center flex-1">
+            <label className="w-24 text-sm font-medium text-foreground">
+              상신일
+            </label>
+            <div className="flex items-center gap-3">
+              <div className="relative">
+                <Input className="w-32"></Input>
+                <span className="material-icons-outlined absolute right-2 top-1.5 text-muted-foreground text-base"></span>
+              </div>
+              <span className="text-muted-foreground">~</span>
+              <div className="relative">
+                <Input className="w-32"></Input>
+                <span className="material-icons-outlined absolute right-2 top-1.5 text-muted-foreground text-base"></span>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Row 2: Form & Search */}
         <div className="flex items-center">
- <div className="flex items-center flex-1">
+          <div className="flex items-center flex-1">
             <label className="w-24 text-sm font-medium text-foreground">
               기안 양식
             </label>
@@ -48,7 +50,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({ onSearch }) => {
                 render={
                   <Button
                     variant="outline"
-                    className="px-4 py-1.5 flex justify-between w-72"
+                    className="px-4 py-1.5 flex items-center gap-52 w-72"
                   >
                     전체
                     <HugeiconsIcon
@@ -73,8 +75,8 @@ const FilterSection: React.FC<FilterSectionProps> = ({ onSearch }) => {
             </DropdownMenu>
           </div>
 
-  <div className="flex items-center flex-1">
-            <label className="w-24 text-sm font-medium text-foreground">
+          <div className="flex items-center flex-1">
+            <label className="w-16 text-sm font-medium text-foreground text-center">
               검색
             </label>
             <div className="flex flex-1 gap-2 items-center">
@@ -84,7 +86,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({ onSearch }) => {
                     render={
                       <Button
                         variant="outline"
-                        className="px-4 py-1.5 flex justify-between w-24"
+                        className="px-4 py-1.5 flex items-center gap-20"
                       >
                         전체
                         <HugeiconsIcon
@@ -95,7 +97,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({ onSearch }) => {
                       </Button>
                     }
                   />
-                  <DropdownMenuContent className="bg-background w-24">
+                  <DropdownMenuContent className="bg-background">
                     <DropdownMenuGroup>
                       <DropdownMenuLabel>전체</DropdownMenuLabel>
                       <DropdownMenuItem>기안부서</DropdownMenuItem>
@@ -105,7 +107,7 @@ const FilterSection: React.FC<FilterSectionProps> = ({ onSearch }) => {
                 </DropdownMenu>
                 <span className="material-icons-outlined absolute right-2 top-1.5 text-muted-foreground text-sm pointer-events-none"></span>
               </div>
-              <Input className="flex-1 max-w-[184px]" placeholder="기안제목 입력" />
+              <Input className="flex-1" placeholder="기안제목 입력" />
             </div>
           </div>
         </div>
@@ -118,4 +120,4 @@ const FilterSection: React.FC<FilterSectionProps> = ({ onSearch }) => {
   );
 };
 
-export default FilterSection;
+export default AdminFilterSection;

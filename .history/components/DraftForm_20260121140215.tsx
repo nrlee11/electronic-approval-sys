@@ -139,9 +139,6 @@ const DraftForm: React.FC = () => {
                         <DropdownMenuItem className="w-full justify-between">
                           si사업부
                         </DropdownMenuItem>
-                        <DropdownMenuItem className="w-full justify-between">
-                          시스템사업부
-                        </DropdownMenuItem>
                       </DropdownMenuGroup>
                     </DropdownMenuContent>
                   </DropdownMenu>

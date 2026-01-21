@@ -73,41 +73,41 @@ const FilterSection: React.FC<FilterSectionProps> = ({ onSearch }) => {
             </DropdownMenu>
           </div>
 
-  <div className="flex items-center flex-1">
-            <label className="w-24 text-sm font-medium text-foreground">
-              검색
-            </label>
-            <div className="flex flex-1 gap-2 items-center">
-              <div className="relative shrink-0 ">
-                <DropdownMenu>
-                  <DropdownMenuTrigger
-                    render={
-                      <Button
-                        variant="outline"
-                        className="px-4 py-1.5 flex justify-between w-24"
-                      >
-                        전체
-                        <HugeiconsIcon
-                          icon={Icons.ArrowDown01Icon}
-                          strokeWidth={2}
-                          data-icon="inline-end"
-                        />
-                      </Button>
-                    }
-                  />
-                  <DropdownMenuContent className="bg-background w-24">
-                    <DropdownMenuGroup>
-                      <DropdownMenuLabel>전체</DropdownMenuLabel>
-                      <DropdownMenuItem>기안부서</DropdownMenuItem>
-                      <DropdownMenuItem>기안제목</DropdownMenuItem>
-                    </DropdownMenuGroup>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-                <span className="material-icons-outlined absolute right-2 top-1.5 text-muted-foreground text-sm pointer-events-none"></span>
-              </div>
-              <Input className="flex-1 max-w-[184px]" placeholder="기안제목 입력" />
-            </div>
-          </div>
+         <div className="flex items-center flex-1">
+                   <label className="w-24 text-sm font-medium text-foreground">
+                     검색
+                   </label>
+                   <div className="flex flex-1 gap-2 items-center">
+                     <div className="relative shrink-0 ">
+                       <DropdownMenu>
+                         <DropdownMenuTrigger
+                           render={
+                             <Button
+                               variant="outline"
+                               className="px-4 py-1.5 flex justify-between w-24"
+                             >
+                               전체
+                               <HugeiconsIcon
+                                 icon={Icons.ArrowDown01Icon}
+                                 strokeWidth={2}
+                                 data-icon="inline-end"
+                               />
+                             </Button>
+                           }
+                         />
+                         <DropdownMenuContent className="bg-background w-24">
+                           <DropdownMenuGroup>
+                             <DropdownMenuLabel>전체</DropdownMenuLabel>
+                             <DropdownMenuItem>기안부서</DropdownMenuItem>
+                             <DropdownMenuItem>기안제목</DropdownMenuItem>
+                           </DropdownMenuGroup>
+                         </DropdownMenuContent>
+                       </DropdownMenu>
+                       <span className="material-icons-outlined absolute right-2 top-1.5 text-muted-foreground text-sm pointer-events-none"></span>
+                     </div>
+                     <Input className="flex-1 max-w-[184px]" placeholder="기안제목 입력" />
+                   </div>
+                 </div>
         </div>
       </div>
 

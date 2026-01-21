@@ -93,13 +93,7 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
                   로그아웃
                 </Button>
               <div className="w-[1px] bg-border my-2 mx-2"></div>
-                <Button 
-                  variant="link" 
-                  className="text-background-foreground"
-                  onClick={() => {
-                    window.location.hash = "#/admin";
-                  }}
-                >
+                <Button variant="link" className="text-background-foreground">
                   관리자 전환
                 </Button>
             </div>

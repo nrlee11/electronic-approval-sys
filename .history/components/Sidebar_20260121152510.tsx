@@ -227,7 +227,7 @@ const Sidebar: React.FC<{ onNavigate?: (page: string) => void }> = ({
           </li>
           <li className="shadow-sm">
             <NavItem
-              label="결재현황 [관리자]"
+              label="관리자"
               onClick={() => {
                 try {
                   window.location.hash = "#/admin";

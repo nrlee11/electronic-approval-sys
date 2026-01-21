@@ -45,7 +45,7 @@ function DropdownMenuContent({
           className={cn(
             // ✅ 회사 토큰 기반 기본 컨테이너
             "bg-popover text-popover-foreground border border-border shadow-md",
-            "min-w-20 rounded-md p-1",
+            "min-w-32 rounded-md p-1",
             "max-h-(--available-height) w-(--anchor-width) origin-(--transform-origin) overflow-x-hidden overflow-y-auto",
             // motion (있으면 쓰고, 없어도 문제 없음)
             "data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95",
@@ -139,7 +139,7 @@ function DropdownMenuSubTrigger({
         "focus:bg-accent focus:text-accent-foreground data-open:bg-accent data-open:text-accent-foreground",
         "data-disabled:pointer-events-none data-disabled:opacity-50",
         "data-[inset]:pl-8",
-        "[&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0 [&_svg]:pointer-events-none",
+        "[&_svg:not([class*='size-'])]:size-2 [&_svg]:shrink-0 [&_svg]:pointer-events-none",
         className,
       )}
       {...props}

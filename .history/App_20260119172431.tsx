@@ -18,7 +18,6 @@ import SavedDocuments from "./pages/SavedDocuments";
 import RejectedDocuments from "./pages/RejectedDocuments";
 import ReturnedDocuments from "./pages/ReturnedDocuments";
 import RetrievedDocuments from "./pages/RetrievedDocuments";
-import AdminPage from "./pages/AdminPage";
 import { UserInfo, TabType, StatusCount } from "./types";
 import { Button } from "./components/ui/button"; // Example usage of the Button component
 import {
@@ -32,7 +31,7 @@ import {
   TableCaption,
 } from "@/components/ui/table";
 
-type PageType = "dashboard" | "submitted" | "pending-approval" | "approval-progress" | "approval-completed" | "approval-rejected" | "forms" | "business-draft" | "completed" | "saved" | "rejected" | "returned" | "retrieved" | "pending-receipt" | "receipt-completed" | "document-register" | "document-detail" | "admin";
+type PageType = "dashboard" | "submitted" | "pending-approval" | "approval-progress" | "approval-completed" | "approval-rejected" | "forms" | "business-draft" | "completed" | "saved" | "rejected" | "returned" | "retrieved" | "pending-receipt" | "receipt-completed" | "document-register" | "document-detail";
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<PageType>("dashboard");
@@ -71,8 +70,6 @@ const App: React.FC = () => {
         setCurrentPage("document-register");
       } else if (hash === "/document-detail" || hash === "document-detail") {
         setCurrentPage("document-detail");
-      } else if (hash === "/admin" || hash === "admin") {
-        setCurrentPage("admin");
       } else {
         setCurrentPage("dashboard");
       }
@@ -295,8 +292,6 @@ const App: React.FC = () => {
               <ReturnedDocuments />
             ) : currentPage === "retrieved" ? (
               <RetrievedDocuments />
-            ) : currentPage === "admin" ? (
-              <AdminPage />
             ) : null}
           </div>
         </main>
