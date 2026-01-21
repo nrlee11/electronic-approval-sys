@@ -82,13 +82,4 @@ textarea {
   .radius-4xl {
     border-radius: var(--radius-4xl);
   }
-  .shadow-sm {
-    box-shadow: var(--shadow-sm);
-  }
-  .shadow-md {
-    box-shadow: var(--shadow-md);
-  }
-  .shadow-lg {
-    box-shadow: var(--shadow-lg);
-  }
 }

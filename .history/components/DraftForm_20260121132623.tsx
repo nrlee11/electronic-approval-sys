@@ -235,7 +235,7 @@ const DraftForm: React.FC = () => {
             </label>
             <div className="space-y-4">
               <div className="flex flex-wrap gap-3">
-                <button className="w-10 h-10 flex flex-col items-center justify-center border border-border radius-md text-muted-foreground hover:border-primary hover:text-primary transition-all bg-background shadow-sm">
+                <button className="w-10 h-10 flex flex-col items-center justify-center border border-border radius-md text-muted-foreground hover:border-primary hover:text-primary transition-all bg-muted/50">
                   <Paperclip size={18} />
                 </button>
                 <Button variant="link" className="flex flex-wrap gap-3">

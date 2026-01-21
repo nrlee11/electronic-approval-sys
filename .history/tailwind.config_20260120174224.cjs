@@ -24,12 +24,6 @@ module.exports = {
         7: "var(--space-7)",
         8: "var(--space-8)",
       },
-      shadow: {
-        sm: "var(--shadow-sm)",
-        md: "var(--shadow-md)",
-        lg: "var(--shadow-lg)",
-      },
-
       // ✅ radius도 토큰으로 통일 (rounded-lg 등이 토큰 값 사용)
       borderRadius: {
         sm: "var(--radius-sm)",
