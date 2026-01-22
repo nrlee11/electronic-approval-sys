@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ChevronDown, Edit2, ChevronLeft, ChevronRight, Pen } from "lucide-react";
+import { ChevronDown, Edit2, ChevronLeft, ChevronRight, PenLine } from "lucide-react";
 
 interface NavItemProps {
   label: string;
@@ -25,7 +25,7 @@ const NavItem: React.FC<NavItemProps> = ({
           if (hasSub) setIsExpanded(!isExpanded);
           else onClick?.();
         }}
-        className="w-full border-b border-border flex items-center justify-between px-6 py-3 text-sm text-muted-foreground hover:bg-muted/60 hover:text-primary transition-all group hover:underline"
+        className="w-full border-b border-border flex items-center justify-between px-6 py-3 text-sm text-muted-foreground hover:text-primary transition-all group hover:underline"
       >
         <span className="font-medium">{label}</span>
         {hasSub && (
@@ -163,7 +163,7 @@ const Sidebar: React.FC<{ onNavigate?: (page: string) => void }> = ({
   };
 
   return (
-    <aside className="w-60 bg-background border-r border-border flex flex-col fixed top-14 left-0 bottom-0 z-20 transition-transform shadow-md">
+    <aside className="w-60 bg-background border-r border-border flex flex-col fixed top-14 left-0 bottom-0 z-20 transition-transform shadow-sm">
       {/* Collapse Toggle */}
       <button className="absolute -right-3 top-2 bg-background border border-border p-0.5 rounded-full shadow-sm hover:bg-muted/60 z-10">
         <ChevronLeft size={14} className="text-muted-foreground" />
@@ -180,10 +180,10 @@ const Sidebar: React.FC<{ onNavigate?: (page: string) => void }> = ({
             }
             onNavigate?.("forms");
           }}
-          className="w-full h-[79px] flex items-center justify-between shadow-sm bg-background text-foreground font-bold px-6 rounded hover:bg-muted/60 border border-transparent hover:border-border transition-all"
+          className="w-full h-[79px] flex items-center justify-between shadow-sm bg-background text-foreground font-bold px-6 border border-transparent hover:text-primary transition-all group"
         >
           <span>기안작성</span>
-          <Pen size={16} className="text-muted-foreground" />
+          <PenLine size={20} className="text-muted-foreground group-hover:text-primary transition-transform" />
         </button>
       </div>
 

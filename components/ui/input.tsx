@@ -15,7 +15,7 @@ function Input({ className, type, ...props }: React.ComponentProps<"input">) {
         [
           // layout & sizing
           "flex h-9 w-full min-w-0 px-2.5 py-1",
-          "text-sm",
+          "text-sm shadow-sm",
 
           // surface
           "bg-background text-foreground",

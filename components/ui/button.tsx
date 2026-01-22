@@ -8,7 +8,7 @@ const buttonVariants = cva(
     "inline-flex items-center justify-center whitespace-nowrap select-none",
     "gap-1.5 font-medium",
     // shape
-    "rounded-md",
+    "radius-sm",
     // icon sizing
     "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none shrink-0",
     // interaction
@@ -31,7 +31,7 @@ const buttonVariants = cva(
           "bg-secondary text-secondary-foreground hover:bg-accent hover:text-accent-foreground",
 
         outline:
-          "border-border bg-background text-foreground hover:bg-accent hover:text-accent-foreground",
+          "border-border bg-background text-foreground hover:bg-accent hover:text-accent-foreground shadow-sm",
 
         ghost:
           "bg-transparent text-foreground hover:bg-accent hover:text-accent-foreground",

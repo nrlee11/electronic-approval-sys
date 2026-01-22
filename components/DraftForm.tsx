@@ -181,7 +181,7 @@ const DraftForm: React.FC = () => {
           </div>
 
           {/* Empty Placeholder for next approver */}
-          <div className="w-36 border border-dashed border-input rounded-md flex flex-col items-center justify-center text-muted-foreground/40 hover:border-brand-blue1/50 hover:text-brand-blue1 hover:border-brand-blue1 transition-colors cursor-pointer group">
+          <div className="w-36 border border-dashed border-input rounded-md flex flex-col items-center justify-center text-muted-foreground/40 hover:border-brand-blue1/50 hover:text-primary hover:border-primary transition-colors cursor-pointer group">
             <Plus size={20} className="mb-1" />
             <span className="text-[10px] font-medium">결재자 추가</span>
           </div>

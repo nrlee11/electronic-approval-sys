@@ -3,6 +3,7 @@ import {
   Info,
   Plus,
   ChevronDown,
+  X,
   Paperclip,
   FileSearch,
   Trash2,
@@ -26,9 +27,11 @@ import {
 
 interface DocumentDetailProps {
   onBack: () => void;
+  
 }
 
 const DocumentDetail: React.FC<DocumentDetailProps> = ({ onBack }) => {
+
 
         const sampleData = [
     {
@@ -125,7 +128,7 @@ const DocumentDetail: React.FC<DocumentDetailProps> = ({ onBack }) => {
           </div>
           {/* Card: Drafter */}
           <div className="w-36 border border-border rounded-md shadow-sm overflow-hidden bg-card">
-            <div className="bg-muted text-brand-blue1 text-sm font-bold text-center py-1.5 border-b border-border uppercase tracking-tighter">
+            <div className="bg-muted text-primary text-sm font-bold text-center py-1.5 border-b border-border uppercase tracking-tighter">
               결재
             </div>
             <div className="h-28 flex flex-col items-center justify-center text-center p-3">
@@ -137,7 +140,7 @@ const DocumentDetail: React.FC<DocumentDetailProps> = ({ onBack }) => {
                 디자인팀
               </span>
               <div className="w-full h-px bg-border my-1"></div>
-              <span className="text-brand-blue1 text-xs">승인 25.12.26 17:31</span>
+              <span className="text-primary text-xs">승인 25.12.26 17:31</span>
             </div>
           </div>
 
@@ -151,10 +154,13 @@ const DocumentDetail: React.FC<DocumentDetailProps> = ({ onBack }) => {
             <span className="text-sm font-bold text-primary">1</span>
             <ChevronDown className="h-4 w-4 text-muted-foreground" />
         </div>
-        <div className="bg-example-content px-4 py-4">
+        <div className="flex items-center bg-example-content px-4 py-4">
             <span className="inline-flex items-center bg-muted/40 px-2 py-1 rounded text-xs text-foreground">
               박현우(hwpark) | 개발팀
             </span>
+            <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-foreground">
+              <X size={24} />
+            </Button>
         </div>
       </div>
 
@@ -250,7 +256,7 @@ const DocumentDetail: React.FC<DocumentDetailProps> = ({ onBack }) => {
                 </TableBody>
               </Table>
               <div className="flex items-center justify-start mt-10">
-                <Button variant="secondary" size="lg">목록</Button>
+                <Button variant="outline" size="lg">목록</Button>
               </div>
                 <footer className="mt-16 pt-8 pb-10 flex flex-col md:flex-row justify-between items-center typo-kicker text-muted-foreground gap-4">
               <div className="flex items-center gap-4">

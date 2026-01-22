@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import AdminFilterSection from "../components/AdminFilterSection";
 import { DraftItem, TabType } from "../types";
 import { Table, TableHeader, TableHead, TableRow, TableBody, TableCell } from "@/components/ui/table";
+import { Badge } from "@/components/ui/badge";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -22,15 +24,34 @@ const DocumentRegister: React.FC<{ onBack?: () => void }> = ({ onBack }) => {
 
     const sampleData = [
     {
-      docId: "-",
+      docId: "DOC-20251226-001",
       formType: "업무기안",
       title: "디자인시스템 개발 요청",
       drafter: "전세호(jun) | SI사업부",
       submittedAt: "2025.12.26 17:28",
-      status: "상신",
-      completedAt: "2025.12.26 17:31",
+      status: <Badge variant="primary">상신</Badge>,
+      completedAt: "-",
+    },
+    {
+      docId: "DOC-20251225-004",
+      formType: "휴가신청서",
+      title: "연차 휴가 신청 (12/30)",
+      drafter: "전유진(yjjeon) | 인사팀",
+      submittedAt: "2025.12.25 09:30",
+      status: <Badge variant="success">완료</Badge>,
+      completedAt: "2025.12.26 10:00",
+    },
+    {
+      docId: "DOC-20251224-002",
+      formType: "지출결의서",
+      title: "12월 회식비 지출 건",
+      drafter: "전세호(jun) | SI사업부",
+      submittedAt: "2025.12.24 14:15",
+      status: <Badge variant="error">반려</Badge>,
+      completedAt: "2025.12.25 11:20",
     },
   ];
+
   const handleSearch = () => {
     console.log("Searching approvals...");
   };
@@ -54,21 +75,19 @@ const DocumentRegister: React.FC<{ onBack?: () => void }> = ({ onBack }) => {
         <main className="flex-1 overflow-y-auto no-scrollbar bg-background">
           <div className="max-w-6xl mx-auto">
             <h2 className="typo-title text-foreground mb-6">{activeSubItem}</h2>
-
             <AdminFilterSection onSearch={handleSearch} />
-
             <div className="mt-12">
               <div className="flex justify-between items-center mb-4">
                 <h2 className="typo-body text-foreground font-bold">
                   총{" "}
                   <span className="font-bold text-foreground">
-                    {results.length}
+                    {sampleData.length}
                   </span>{" "}
                   건
                 </h2>
 
                 <div className="flex gap-2 relative inline-block text-left">
-                  <Button variant="secondary">
+                  <Button variant="outline">
                     선택삭제
                   </Button>
                   <DropdownMenu>
@@ -116,6 +135,11 @@ const DocumentRegister: React.FC<{ onBack?: () => void }> = ({ onBack }) => {
               <Table>
                 <TableHeader>
                   <TableRow>
+                    <TableHead className="w-12 p-0">
+                      <div className="flex h-10 items-center justify-center">
+                        <Checkbox />
+                      </div>
+                    </TableHead>
                     <TableHead>문서번호</TableHead>
                     <TableHead>기안양식</TableHead>
                     <TableHead>기안제목</TableHead>
@@ -127,8 +151,12 @@ const DocumentRegister: React.FC<{ onBack?: () => void }> = ({ onBack }) => {
                 </TableHeader>
                   <TableBody>
                   {sampleData.map((item, index) => (
-                    <React.Fragment key={index}>
                     <TableRow key={index} className="border-b border-border">
+                      <TableCell className="w-12 p-0">
+                        <div className="flex h-10 items-center justify-center">
+                          <Checkbox />
+                        </div>
+                      </TableCell>
                       <TableCell className="text-center">{item.docId}</TableCell>
                       <TableCell className="text-center">
                         {item.formType}
@@ -156,35 +184,6 @@ const DocumentRegister: React.FC<{ onBack?: () => void }> = ({ onBack }) => {
                         {item.completedAt}
                       </TableCell>
                     </TableRow>
-                    <TableRow key={index} className="border-b border-border">
-                      <TableCell className="text-center">{item.docId}</TableCell>
-                      <TableCell className="text-center">
-                        {item.formType}
-                      </TableCell>
-                      <TableCell className="text-left">
-                        <span
-                          className="cursor-pointer underline underline-offset-1"
-                          onClick={() => {
-                            window.location.hash = "#/document-detail";
-                          }}
-                        >
-                          {item.title}
-                        </span>
-                      </TableCell>
-                      <TableCell className="text-center">
-                        {item.drafter}
-                      </TableCell>
-                      <TableCell className="text-center">
-                        {item.submittedAt}
-                      </TableCell>
-                      <TableCell className="text-center">
-                        {item.status}
-                      </TableCell>
-                      <TableCell className="text-center">
-                        {item.completedAt}
-                      </TableCell>
-                    </TableRow>
-                  </React.Fragment>
                   ))}   
 
                 </TableBody>

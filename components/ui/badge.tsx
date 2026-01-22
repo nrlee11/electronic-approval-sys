@@ -44,6 +44,17 @@ const badgeVariants = cva(
 
         // 링크형 배지
         link: "bg-transparent text-primary underline-offset-4 hover:underline",
+
+        //--------------status뱃지----------------------------
+
+        primary: "bg-background border-primary text-primary",
+
+        warning: "bg-background border-warning text-warning",
+
+        success: "bg-background border-success text-success",
+
+        error: "bg-background border-destructive text-destructive",
+
       },
     },
     defaultVariants: {

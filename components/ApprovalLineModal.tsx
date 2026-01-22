@@ -216,7 +216,6 @@ const ApprovalLineModal: React.FC<ApprovalLineModalProps> = ({ isOpen, onClose }
                           <DropdownMenuTrigger
                             render={
                               <Button
-                                variant="outline"
                                 className="px-4 py-1.5 flex items-center gap-52" disabled
                               >
                                 [업무기안] 기본결재선
@@ -266,7 +265,7 @@ const ApprovalLineModal: React.FC<ApprovalLineModalProps> = ({ isOpen, onClose }
                                  {approvalList.map((item, idx) => (
                                      <li key={idx} className="flex justify-between items-center p-3 hover:bg-muted text-sm">
                                          <span className="flex items-center gap-3">
-                                         <Badge className={`px-2 py-0.5 text-[11px] font-medium border ${item.type === '결재' ? 'bg-background border-primary text-primary' : 'bg-background border-warning text-warning'}`}>{item.type}</Badge>
+                                         <Badge variant={item.type === '결재' ? 'primary' : 'warning'}>{item.type}</Badge>
                                          <span className="text-foreground">{item.name}</span>
                                          </span>
                                          <Button 

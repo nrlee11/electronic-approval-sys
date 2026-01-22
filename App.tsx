@@ -145,7 +145,7 @@ const App: React.FC = () => {
                       <span className="typo-caption text-primary mb-2">
                         상신한
                       </span>
-                      <span className="text-3xl font-light text-foreground/85">
+                      <span className="text-3xl font-medium text-foreground/85">
                         {status.submitted}
                       </span>
                     </div>
@@ -154,7 +154,7 @@ const App: React.FC = () => {
                       <span className="typo-caption text-primary mb-2">
                         반려된
                       </span>
-                      <span className="text-3xl font-light text-foreground/85">
+                      <span className="text-3xl font-medium text-foreground/85">
                         {status.rejected}
                       </span>
                     </div>
@@ -163,7 +163,7 @@ const App: React.FC = () => {
                       <span className="typo-caption text-primary mb-2">
                         결재전
                       </span>
-                      <span className="text-3xl font-light text-foreground/85">
+                      <span className="text-3xl font-medium text-foreground/85">
                         {status.pending}
                       </span>
                     </div>
@@ -173,13 +173,13 @@ const App: React.FC = () => {
                         수신/공람
                       </span>
                       <div className="flex items-center gap-2">
-                        <span className="text-3xl font-light text-foreground/85">
+                        <span className="text-3xl font-medium text-foreground/85">
                           {status.received}
                         </span>
-                        <span className="text-2xl font-thin text-muted-foreground/60">
+                        <span className="text-2xl font-medium text-muted-foreground/60">
                           /
                         </span>
-                        <span className="text-3xl font-light text-foreground/85">
+                        <span className="text-3xl font-medium text-foreground/85">
                           {status.public}
                         </span>
                       </div>

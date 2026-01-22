@@ -93,7 +93,7 @@ function TableHead({ className, ...props }: React.ComponentProps<"th">) {
           "h-10 px-2 text-center align-middle whitespace-nowrap",
           "font-medium text-foreground",
           // 체크박스 들어가는 칼럼 정렬 보정
-          "[&:has([role=checkbox])]:pr-0",
+          "[&:has([role=checkbox])]",
           "border-r border-border",
           "[&:last-child]:border-r-0"
         ].join(" "),
@@ -109,7 +109,7 @@ function TableCell({ className, ...props }: React.ComponentProps<"td">) {
     <td
       data-slot="table-cell"
       className={cn(
-        "p-2 align-middle whitespace-nowrap [&:has([role=checkbox])]:pr-0",
+        "p-2 align-middle whitespace-nowrap [&:has([role=checkbox])]",
         "border-r border-border",
         "[&:last-child]:border-r-0",
         className

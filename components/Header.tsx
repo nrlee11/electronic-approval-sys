@@ -6,7 +6,7 @@ import {
   DropdownMenuContent,
 } from "@/components/ui/dropdown-menu";
 import { UserInfo } from "../types";
-import logo from "../assets/Leadit_logo.svg";
+import logo from "../assets/lead_logo.svg";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
@@ -34,9 +34,19 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
     <header className="h-14 bg-brand-blue1 text-brand-blue1-foreground flex items-center justify-between px-6 z-30 fixed top-0 left-0 right-0">
       <div className="flex items-center gap-8">
         <h1 className="flex items-center">
-          <a href="/">
-            <img src={logo} alt="전자결재" className="h-6 w-auto" />
-          </a>
+         <a href="/" className="relative">
+          {/* 백라이트 */}
+          <span className="absolute inset-[-8px] rounded-full bg-white/30 blur-md"></span>
+
+          {/* 로고 */}
+          <img
+            src={logo}
+            alt="전자결재"
+            className="relative h-5 w-auto
+                      drop-shadow-[0_0_6px_rgba(255,255,255,0.6)]
+                      drop-shadow-[0_0_12px_rgba(255,255,255,0.35)]"
+          />
+        </a>
         </h1>
         <nav className="flex items-center gap-10">
           {menuItems.map((item) => (
