@@ -134,7 +134,7 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
 
             {/* Substitute Approver */}
             <div className="p-5 pt-2">
-              <button className="w-full bg-muted rounded-lg p-3.5 flex justify-between items-center text-sm hover:bg-muted transition-colors text-foreground">
+              <button className="w-full bg-muted rounded-lg p-3.5 flex justify-between items-center text-sm hover:bg-accent transition-colors text-foreground">
                 <span className="font-medium">대리결재자 설정</span>
                 <ChevronRight size={16} className="text-muted-foreground" />
               </button>
