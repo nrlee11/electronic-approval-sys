@@ -190,32 +190,26 @@ const Sidebar: React.FC<{ onNavigate?: (page: string) => void }> = ({
       {/* Main Nav */}
       <nav className="flex-1 overflow-y-auto no-scrollbar">
         <ul className="space-y-0.5">
-          <li className="shadow-sm">
-            <NavItem
+            <NavItem 
+             className="shadow-sm"
               label="기안함"
               hasSub
               subItems={["상신한", "완료된", "저장된", "반려된", "반송된", "회수된"]}
               onSubItemClick={handleSubItemClick}
-            />
-          </li>
-          <li className="shadow-sm">
-            <NavItem
+            />  
+            <NavItem className="shadow-sm"
               label="결재함"
               hasSub
               subItems={["결재전", "진행중", "완료된", "반려된"]}
               onSubItemClick={handleSubItemClick}
             />
-          </li>
-          <li className="shadow-sm">
-            <NavItem
+            <NavItem  className="shadow-sm"
               label="수신함"
               hasSub
               subItems={["수신전", "완료된"]}
               onSubItemClick={handleSubItemClick}
             />
-          </li>
-          <li className="shadow-sm">
-            <NavItem
+            <NavItem  className="shadow-sm"
               label="문서대장"
               onClick={() => {
                 try {
@@ -224,9 +218,7 @@ const Sidebar: React.FC<{ onNavigate?: (page: string) => void }> = ({
                 onNavigate?.("document-register");
               }}
             />
-          </li>
-          <li className="shadow-sm">
-            <NavItem
+            <NavItem  className="shadow-sm"
               label="결재현황 [관리자]"
               onClick={() => {
                 try {
@@ -235,7 +227,6 @@ const Sidebar: React.FC<{ onNavigate?: (page: string) => void }> = ({
                 onNavigate?.("admin");
               }}
             />
-          </li>
         </ul>
       </nav>
 
