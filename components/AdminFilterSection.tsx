@@ -119,7 +119,7 @@ const AdminFilterSection: React.FC<AdminFilterSectionProps> = ({ onSearch }) => 
                         variant="outline"
                         className="px-4 py-1.5 flex justify-between w-24"
                       >
-                        기안제목
+                        제목
                         <HugeiconsIcon
                           icon={Icons.ArrowDown01Icon}
                           strokeWidth={2}
