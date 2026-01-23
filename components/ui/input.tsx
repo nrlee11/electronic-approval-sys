@@ -20,7 +20,7 @@ function Input({ className, type, ...props }: React.ComponentProps<"input">) {
           // surface
           "bg-background text-foreground",
           "border border-input",
-          "rounded-md",
+          "radius-sm",
 
           // placeholder
           "placeholder:text-muted-foreground",

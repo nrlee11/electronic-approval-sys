@@ -158,7 +158,7 @@ const DocumentDetail: React.FC<DocumentDetailProps> = ({ onBack }) => {
             <span className="inline-flex items-center bg-muted/40 px-2 py-1 rounded text-xs text-foreground">
               박현우(hwpark) | 개발팀
             </span>
-            <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-foreground">
+            <Button variant="ghost" size="icon" className="h-8 w-8 text-muted-foreground hover:text-primary">
               <X size={24} />
             </Button>
         </div>
@@ -205,7 +205,7 @@ const DocumentDetail: React.FC<DocumentDetailProps> = ({ onBack }) => {
                       <TableCell className="text-center">
                         {item.formType}
                       </TableCell>
-                      <TableCell className="text-center text-brand-blue1">
+                      <TableCell className="text-center text-primary">
                         <span
                           className="cursor-pointer"
                           onClick={() => {
@@ -230,7 +230,7 @@ const DocumentDetail: React.FC<DocumentDetailProps> = ({ onBack }) => {
                       <TableCell className="text-center">
                         {item.formType}
                       </TableCell>
-                      <TableCell className="text-center text-brand-blue1">
+                      <TableCell className="text-center text-primary">
                         <span
                           className="cursor-pointer"
                           onClick={() => {

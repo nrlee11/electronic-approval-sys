@@ -44,8 +44,9 @@ const orgData = [
     isFolder: true,
     isOpen: true,
     children: [
-      { id: "user_dev1", name: "김개발(dev1)", isFolder: false, team: "개발팀" },
-      { id: "user_dev2", name: "이코딩(dev2)", isFolder: false, team: "개발팀" },
+      { id: "user_dev1", name: "김유경(ykkim)", isFolder: false, team: "개발팀" },
+      { id: "user_dev2", name: "원도윤(dywon)", isFolder: false, team: "개발팀" },
+      { id: "user_dev3", name: "박현우(hwpark)", isFolder: false, team: "개발팀" },
     ],
   },
   {
@@ -263,7 +264,7 @@ const ApprovalLineModal: React.FC<ApprovalLineModalProps> = ({ isOpen, onClose }
                         ) : (
                              <ul className="divide-y divide-border">
                                  {approvalList.map((item, idx) => (
-                                     <li key={idx} className="flex justify-between items-center p-3 hover:bg-muted text-sm">
+                                     <li key={idx} className="flex justify-between items-center p-3 hover:bg-example-content text-sm">
                                          <span className="flex items-center gap-3">
                                          <Badge variant={item.type === '결재' ? 'primary' : 'warning'}>{item.type}</Badge>
                                          <span className="text-foreground">{item.name}</span>
@@ -271,7 +272,7 @@ const ApprovalLineModal: React.FC<ApprovalLineModalProps> = ({ isOpen, onClose }
                                          <Button 
                                             variant="ghost" 
                                             size="icon" 
-                                            className="h-6 w-6 text-muted-foreground hover:text-destructive"
+                                            className="h-6 w-6 text-muted-foreground hover:text-primary"
                                             onClick={() => setApprovalList(approvalList.filter((_, i) => i !== idx))}
                                          >
                                              <X size={14} />
@@ -318,12 +319,12 @@ const ApprovalLineModal: React.FC<ApprovalLineModalProps> = ({ isOpen, onClose }
                      ) : (
                           <ul className="divide-y divide-border">
                               {(selectedTab === 'recipient' ? recipientList : selectedTab === 'reference' ? referenceList : circulationList).map((item, idx) => (
-                                   <li key={idx} className="flex justify-between items-center p-3 hover:bg-muted text-sm">
+                                   <li key={idx} className="flex justify-between items-center p-3 hover:bg-example-content text-sm">
                                       <span className="text-foreground font-medium pl-2">{item.name}</span>
                                        <Button 
                                          variant="ghost" 
                                          size="icon" 
-                                         className="h-6 w-6 text-muted-foreground hover:text-destructive"
+                                         className="h-6 w-6 text-muted-foreground hover:text-primary"
                                          onClick={() => {
                                              if (selectedTab === 'recipient') setRecipientList(recipientList.filter((_, i) => i !== idx));
                                              if (selectedTab === 'reference') setReferenceList(referenceList.filter((_, i) => i !== idx));
@@ -343,7 +344,7 @@ const ApprovalLineModal: React.FC<ApprovalLineModalProps> = ({ isOpen, onClose }
 
         {/* Footer */}
         <div className="flex items-center justify-center gap-3 pt-6 pb-2">
-          <Button variant="secondary" size="lg" onClick={onClose}>취소</Button>
+          <Button variant="outline" size="lg" onClick={onClose}>취소</Button>
           <Button variant="default" size="lg">적용</Button>
         </div>
       </div>

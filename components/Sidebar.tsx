@@ -7,6 +7,7 @@ interface NavItemProps {
   subItems?: string[];
   onSubItemClick?: (subItem: string, section: string) => void;
   onClick?: () => void;
+  className?: string;
 }
 
 const NavItem: React.FC<NavItemProps> = ({
@@ -15,6 +16,7 @@ const NavItem: React.FC<NavItemProps> = ({
   subItems = [],
   onSubItemClick,
   onClick,
+  className = "",
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -25,7 +27,7 @@ const NavItem: React.FC<NavItemProps> = ({
           if (hasSub) setIsExpanded(!isExpanded);
           else onClick?.();
         }}
-        className="w-full border-b border-border flex items-center justify-between px-6 py-3 text-sm text-muted-foreground hover:text-primary transition-all group hover:underline"
+      className={`w-full border-b border-border flex items-center justify-between px-6 py-3 text-sm text-muted-foreground hover:text-primary transition-all group hover:underline ${className}`}
       >
         <span className="font-medium">{label}</span>
         {hasSub && (
@@ -191,7 +193,7 @@ const Sidebar: React.FC<{ onNavigate?: (page: string) => void }> = ({
       <nav className="flex-1 overflow-y-auto no-scrollbar">
         <ul className="space-y-0.5">
             <NavItem 
-             className="shadow-sm"
+             className="bg-background shadow-sm"
               label="기안함"
               hasSub
               subItems={["상신한", "완료된", "저장된", "반려된", "반송된", "회수된"]}
