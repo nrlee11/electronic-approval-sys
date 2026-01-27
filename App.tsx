@@ -32,7 +32,25 @@ import {
   TableCaption,
 } from "@/components/ui/table";
 
-type PageType = "dashboard" | "submitted" | "pending-approval" | "approval-progress" | "approval-completed" | "approval-rejected" | "forms" | "business-draft" | "completed" | "saved" | "rejected" | "returned" | "retrieved" | "pending-receipt" | "receipt-completed" | "document-register" | "document-detail" | "admin";
+type PageType =
+  | "dashboard"
+  | "submitted"
+  | "pending-approval"
+  | "approval-progress"
+  | "approval-completed"
+  | "approval-rejected"
+  | "forms"
+  | "business-draft"
+  | "completed"
+  | "saved"
+  | "rejected"
+  | "returned"
+  | "retrieved"
+  | "pending-receipt"
+  | "receipt-completed"
+  | "document-register"
+  | "document-detail"
+  | "admin";
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<PageType>("dashboard");
@@ -45,11 +63,20 @@ const App: React.FC = () => {
         setCurrentPage("submitted");
       } else if (hash === "/pending-approval" || hash === "pending-approval") {
         setCurrentPage("pending-approval");
-      } else if (hash === "/approval-progress" || hash === "approval-progress") {
+      } else if (
+        hash === "/approval-progress" ||
+        hash === "approval-progress"
+      ) {
         setCurrentPage("approval-progress");
-      } else if (hash === "/approval-completed" || hash === "approval-completed") {
+      } else if (
+        hash === "/approval-completed" ||
+        hash === "approval-completed"
+      ) {
         setCurrentPage("approval-completed");
-      } else if (hash === "/approval-rejected" || hash === "approval-rejected") {
+      } else if (
+        hash === "/approval-rejected" ||
+        hash === "approval-rejected"
+      ) {
         setCurrentPage("approval-rejected");
       } else if (hash === "/forms" || hash === "forms") {
         setCurrentPage("forms");
@@ -65,9 +92,15 @@ const App: React.FC = () => {
         setCurrentPage("retrieved");
       } else if (hash === "/pending-receipt" || hash === "pending-receipt") {
         setCurrentPage("pending-receipt");
-      } else if (hash === "/receipt-completed" || hash === "receipt-completed") {
+      } else if (
+        hash === "/receipt-completed" ||
+        hash === "receipt-completed"
+      ) {
         setCurrentPage("receipt-completed");
-      } else if (hash === "/document-register" || hash === "document-register") {
+      } else if (
+        hash === "/document-register" ||
+        hash === "document-register"
+      ) {
         setCurrentPage("document-register");
       } else if (hash === "/document-detail" || hash === "document-detail") {
         setCurrentPage("document-detail");
@@ -117,8 +150,20 @@ const App: React.FC = () => {
   };
   const tableHeaders: Record<TabType, string[]> = {
     [TabType.SUBMITTED]: ["기안양식", "기안제목", "결재대기자", "상신일시"],
-    [TabType.TO_APPROVE]: ["결재구분", "기안양식","기안제목", "기안자 ", "상신일시"],
-    [TabType.RECENT_COMMENTS]: ["결재구분", "결재처리", "결재의견", "결재자", "상신일시"],
+    [TabType.TO_APPROVE]: [
+      "결재구분",
+      "기안양식",
+      "기안제목",
+      "기안자 ",
+      "상신일시",
+    ],
+    [TabType.RECENT_COMMENTS]: [
+      "결재구분",
+      "결재처리",
+      "결재의견",
+      "결재자",
+      "상신일시",
+    ],
   };
   return (
     <div className="min-h-screen bg-background text-foreground font-sans">
@@ -186,6 +231,7 @@ const App: React.FC = () => {
                     </div>
                   </div>
                 </section>
+                {/* test */}
 
                 {/* Documents List */}
                 <section>
@@ -196,10 +242,11 @@ const App: React.FC = () => {
                         <button
                           key={tab.id}
                           onClick={() => setActiveTab(tab.id)}
-                          className={`typo-tab px-6 py-4 transition-colors relative ${isActive
-                            ? "text-primary"
-                            : "text-muted-foreground hover:text-foreground"
-                            }`}
+                          className={`typo-tab px-6 py-4 transition-colors relative ${
+                            isActive
+                              ? "text-primary"
+                              : "text-muted-foreground hover:text-foreground"
+                          }`}
                         >
                           {tab.label}
                           {isActive && (
@@ -210,13 +257,13 @@ const App: React.FC = () => {
                     })}
                   </div>
                   <Table>
-                     <TableHeader>
-    <TableRow>
-      {tableHeaders[activeTab].map((head) => (
-        <TableHead key={head}>{head}</TableHead>
-      ))}
-    </TableRow>
-  </TableHeader>
+                    <TableHeader>
+                      <TableRow>
+                        {tableHeaders[activeTab].map((head) => (
+                          <TableHead key={head}>{head}</TableHead>
+                        ))}
+                      </TableRow>
+                    </TableHeader>
                   </Table>
                   <EmptyState message={getEmptyMessage()} />
                 </section>
