@@ -231,7 +231,6 @@ const App: React.FC = () => {
                     </div>
                   </div>
                 </section>
-                {/* test */}
 
                 {/* Documents List */}
                 <section>
@@ -267,7 +266,6 @@ const App: React.FC = () => {
                   </Table>
                   <EmptyState message={getEmptyMessage()} />
                 </section>
-
                 {/* Recent Forms */}
                 <section>
                   <div className="flex items-center justify-between mb-4 border-b border-border pb-3">
@@ -282,7 +280,6 @@ const App: React.FC = () => {
                     <EmptyState message="최근 사용한 양식이 존재하지 않습니다." />
                   </div>
                 </section>
-
                 {/* Footer */}
                 <footer className="mt-16 pt-8 pb-10 flex flex-col md:flex-row justify-between items-center typo-kicker text-muted-foreground gap-4">
                   <div className="flex items-center gap-4">
