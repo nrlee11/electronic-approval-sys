@@ -11,11 +11,13 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { HugeiconsIcon } from "@hugeicons/react";
 import * as Icons from "@hugeicons/core-free-icons";
-interface   AdminFilterSectionProps {
+interface AdminFilterSectionProps {
   onSearch: () => void;
 }
 
-const AdminFilterSection: React.FC<AdminFilterSectionProps> = ({ onSearch }) => {
+const AdminFilterSection: React.FC<AdminFilterSectionProps> = ({
+  onSearch,
+}) => {
   return (
     <div className="bg-card rounded-sm border-t border-b border-border py-8 px-4 mb-6">
       <div className="flex flex-col gap-6">
@@ -37,7 +39,7 @@ const AdminFilterSection: React.FC<AdminFilterSectionProps> = ({ onSearch }) => 
               </div>
             </div>
           </div>
-         <div className="flex items-center flex-1">
+          <div className="flex items-center flex-1">
             <label className="w-24 text-sm font-medium text-foreground">
               기안 양식
             </label>
@@ -57,7 +59,7 @@ const AdminFilterSection: React.FC<AdminFilterSectionProps> = ({ onSearch }) => 
                   </Button>
                 }
               />
-              <DropdownMenuContent className="bg-background w-72">
+              <DropdownMenuContent className="bg-background">
                 <DropdownMenuGroup>
                   <DropdownMenuLabel>전체</DropdownMenuLabel>
                   <DropdownMenuItem>업무기안</DropdownMenuItem>
@@ -94,7 +96,7 @@ const AdminFilterSection: React.FC<AdminFilterSectionProps> = ({ onSearch }) => 
                   </Button>
                 }
               />
-              <DropdownMenuContent className="bg-background w-72">
+              <DropdownMenuContent className="bg-background">
                 <DropdownMenuGroup>
                   <DropdownMenuLabel>전체</DropdownMenuLabel>
                   <DropdownMenuItem>상신</DropdownMenuItem>
@@ -128,7 +130,7 @@ const AdminFilterSection: React.FC<AdminFilterSectionProps> = ({ onSearch }) => 
                       </Button>
                     }
                   />
-                  <DropdownMenuContent className="bg-background w-24">
+                  <DropdownMenuContent className="bg-background">
                     <DropdownMenuGroup>
                       <DropdownMenuLabel>전체</DropdownMenuLabel>
                       <DropdownMenuItem>기안부서</DropdownMenuItem>

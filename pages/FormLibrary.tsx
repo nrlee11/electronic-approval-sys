@@ -10,9 +10,9 @@ interface FormLibraryProps {
 
 const FormLibrary: React.FC<FormLibraryProps> = ({ onBack, onFormSelect }) => {
   return (
-    <div className="flex flex-col h-screen overflow-hidden text-foreground">
-      <div className="flex flex-1 overflow-hidden">
-        <div className="max-w-7xl mx-auto min-h-full flex flex-col">
+    <div className="flex flex-col w-full text-foreground">
+      <div className="flex flex-1">
+        <div className="max-w-7xl mx-auto w-full flex flex-col">
           <h2 className="typo-title text-foreground mb-6">기안 양식함</h2>
           <section className="flex-1 w-full">
             <div className="flex items-center justify-between border-b border-border pb-3 mb-6">

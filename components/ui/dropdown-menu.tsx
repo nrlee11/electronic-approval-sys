@@ -38,18 +38,13 @@ function DropdownMenuContent({
         alignOffset={alignOffset}
         side={side}
         sideOffset={sideOffset}
-        className="isolate z-50 outline-none"
+        className="isolate z-50 outline-none w-[var(--anchor-width)]"
       >
         <MenuPrimitive.Popup
-          data-slot="dropdown-menu-content"
           className={cn(
-            // ✅ 회사 토큰 기반 기본 컨테이너
             "bg-popover text-popover-foreground border border-border shadow-md",
-            "min-w-20 rounded-md p-1",
-            "max-h-(--available-height) w-(--anchor-width) origin-(--transform-origin) overflow-x-hidden overflow-y-auto",
-            // motion (있으면 쓰고, 없어도 문제 없음)
-            "data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95",
-            "outline-none",
+            "rounded-md p-1",
+            "max-h-[var(--available-height)] w-full origin-[var(--transform-origin)] overflow-x-hidden overflow-y-auto",
             className,
           )}
           {...props}

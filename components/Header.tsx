@@ -87,7 +87,7 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
                     <span className="font-bold text-base text-foreground truncate">
                       {user.name}({user.id})
                     </span>
-                    <Badge variant="default" className="bg-example-content text-brand-blue1 border-brand-blue1">겸임</Badge>
+                    <Badge className="bg-example-content text-brand-blue1 border-brand-blue1">겸임</Badge>
                   </div>
                   <div className="text-sm text-muted-foreground mt-1 flex flex-col">
                     <span>{user.department}</span>

@@ -164,7 +164,7 @@ const DraftForm: React.FC = () => {
         </div>
         <div className="flex gap-4">
           {/* Card: Drafter */}
-          <div className="w-36 border border-border rounded-md shadow-sm overflow-hidden bg-card">
+          <div className="w-36 border border-border radius-md shadow-sm overflow-hidden bg-card">
             <div className="bg-muted text-sm font-bold text-center py-1.5 border-b border-border text-muted-foreground uppercase tracking-tighter">
               기안
             </div>
@@ -181,7 +181,7 @@ const DraftForm: React.FC = () => {
           </div>
 
           {/* Empty Placeholder for next approver */}
-          <div className="w-36 border border-dashed border-input rounded-md flex flex-col items-center justify-center text-muted-foreground/40 hover:border-brand-blue1/50 hover:text-primary hover:border-primary transition-colors cursor-pointer group">
+          <div className="w-36 border border-dashed border-input radius-md flex flex-col items-center justify-center text-muted-foreground/40 hover:border-brand-blue1/50 hover:text-primary hover:border-primary transition-colors cursor-pointer group">
             <Plus size={20} className="mb-1" />
             <span className="text-[10px] font-medium">결재자 추가</span>
           </div>
@@ -189,7 +189,7 @@ const DraftForm: React.FC = () => {
       </section>
 
       {/* Info Banner */}
-      <div className="bg-example-content border border-brand-blue1/20 p-5 rounded-lg flex items-start gap-3">
+      <div className="bg-example-content border border-brand-blue1/20 p-5 radius-lg flex items-start gap-3">
         <div className="bg-example-content p-1.5 rounded-full">
           <Info size={18} className="text-brand-blue3" />
         </div>
@@ -249,7 +249,7 @@ const DraftForm: React.FC = () => {
                   <Trash2 size={14} />
                 </Button>
               </div>
-              <div className="bg-muted p-4 rounded-lg border border-border">
+              <div className="bg-muted p-4 radius-lg border border-border">
                 <ul className="text-[11px] text-muted-foreground space-y-1 leading-relaxed list-disc pl-3">
                   <li>
                     20mb 미만의 이미지(jpg, png) 또는 문서(doc, pdf, xls) 파일만

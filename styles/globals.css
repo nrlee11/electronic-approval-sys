@@ -8,14 +8,12 @@ body {
   font-family: var(--font-sans-base);
   background-color: var(--background);
   color: var(--foreground);
-
 }
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
-
 }
 
 a {
@@ -91,4 +89,34 @@ textarea {
   .shadow-lg {
     box-shadow: var(--shadow-lg);
   }
+}
+/* 모바일 홈에서 카드 순차등장 */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fadeUp {
+  animation: fadeUp 420ms ease-out both;
+}
+/* 순차 딜레이(필요한 만큼 추가) */
+.stagger-0 {
+  animation-delay: 0ms;
+}
+.stagger-1 {
+  animation-delay: 200ms;
+}
+.stagger-2 {
+  animation-delay: 400ms;
+}
+.stagger-3 {
+  animation-delay: 600ms;
+}
+.stagger-4 {
+  animation-delay: 800ms;
 }
