@@ -26,7 +26,7 @@ const MobileDrafts: React.FC<{ initialTab?: string; onBack?: () => void }> = ({
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-3 overflow-x-auto pb-3 border-b border-border mb-4">
+      <div className="flex gap-3 overflow-x-auto border-b border-border mb-4">
         {tabs.map((t) => (
           <button
             key={t}

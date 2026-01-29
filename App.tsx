@@ -347,12 +347,6 @@ const App: React.FC = () => {
           {mobileTab === "write-form" && (
             <MobileBusinessDraft onBack={() => setMobileTab("write")} />
           )}
-          {mobileTab === "documents" && (
-            <div className="pt-16 pb-20 px-4">
-              <h2 className="text-lg font-bold mb-4">문서함</h2>
-              <EmptyState message="보관된 문서가 없습니다." />
-            </div>
-          )}
           {mobileTab === "menu" && (
             <div className="pt-16 pb-20 px-4">
               <h2 className="text-lg font-bold mb-4">전체 메뉴</h2>

@@ -34,19 +34,19 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
     <header className="h-14 bg-brand-blue1 text-brand-blue1-foreground flex items-center justify-between px-6 z-30 fixed top-0 left-0 right-0">
       <div className="flex items-center gap-8">
         <h1 className="flex items-center">
-         <a href="/" className="relative">
-          {/* 백라이트 */}
-          <span className="absolute inset-[-8px] rounded-full bg-white/30 blur-md"></span>
+          <a href="/" className="relative">
+            {/* 백라이트 */}
+            <span className="absolute inset-[-8px] rounded-full bg-white/30 blur-md"></span>
 
-          {/* 로고 */}
-          <img
-            src={logo}
-            alt="전자결재"
-            className="relative h-5 w-auto
+            {/* 로고 */}
+            <img
+              src={logo}
+              alt="전자결재"
+              className="relative h-5 w-auto
                       drop-shadow-[0_0_6px_rgba(255,255,255,0.6)]
                       drop-shadow-[0_0_12px_rgba(255,255,255,0.35)]"
-          />
-        </a>
+            />
+          </a>
         </h1>
         <nav className="flex items-center gap-10">
           {menuItems.map((item) => (
@@ -75,7 +75,10 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
               </div>
             </div>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-[320px] p-0 overflow-hidden">
+          <DropdownMenuContent
+            align="end"
+            className="w-[320px] p-0 overflow-hidden"
+          >
             {/* User Info Section */}
             <div className="p-5">
               <div className="flex items-start gap-4">
@@ -87,7 +90,12 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
                     <span className="font-bold text-base text-foreground truncate">
                       {user.name}({user.id})
                     </span>
-                    <Badge className="bg-example-content text-brand-blue1 border-brand-blue1">겸임</Badge>
+                    <Badge
+                      variant="default"
+                      className="bg-example-content text-brand-blue1 border-brand-blue1"
+                    >
+                      겸임
+                    </Badge>
                   </div>
                   <div className="text-sm text-muted-foreground mt-1 flex flex-col">
                     <span>{user.department}</span>
@@ -99,19 +107,17 @@ const Header: React.FC<HeaderProps> = ({ user }) => {
 
             {/* Action Buttons */}
             <div className="flex justify-center gap-5 p-1 bg-muted border-t border-b border-border">
-                <Button variant="link">
-                  로그아웃
-                </Button>
+              <Button variant="link">로그아웃</Button>
               <div className="w-[1px] bg-border my-2 mx-2"></div>
-                <Button 
-                  variant="link" 
-                  className="text-background-foreground"
-                  onClick={() => {
-                    window.location.hash = "#/admin";
-                  }}
-                >
-                  관리자 전환
-                </Button>
+              <Button
+                variant="link"
+                className="text-background-foreground"
+                onClick={() => {
+                  window.location.hash = "#/admin";
+                }}
+              >
+                관리자 전환
+              </Button>
             </div>
 
             {/* Settings Section */}
@@ -169,12 +175,14 @@ const Switch = ({
       role="switch"
       aria-checked={isChecked}
       onClick={toggle}
-      className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 ${isChecked ? "bg-primary" : "bg-input"
-        }`}
+      className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:cursor-not-allowed disabled:opacity-50 ${
+        isChecked ? "bg-primary" : "bg-input"
+      }`}
     >
       <span
-        className={`pointer-events-none block h-5 w-5 rounded-full bg-background shadow-lg ring-0 transition-transform ${isChecked ? "translate-x-5" : "translate-x-0"
-          }`}
+        className={`pointer-events-none block h-5 w-5 rounded-full bg-background shadow-lg ring-0 transition-transform ${
+          isChecked ? "translate-x-5" : "translate-x-0"
+        }`}
       />
     </button>
   );
