@@ -111,7 +111,7 @@ const MobileBusinessDraft: React.FC<MobileBusinessDraftProps> = ({
                   </Button>
                 }
               />
-              <DropdownMenuContent className="bg-background">
+              <DropdownMenuContent className="bg-background w-full">
                 <DropdownMenuGroup>
                   <DropdownMenuLabel>전체</DropdownMenuLabel>
                   <DropdownMenuItem>디자인팀</DropdownMenuItem>
@@ -246,7 +246,7 @@ const MobileBusinessDraft: React.FC<MobileBusinessDraftProps> = ({
 
       {/* Footer Actions */}
       <div className="fixed bottom-0 left-0 right-0 bg-background border-t border-border p-0 flex z-20">
-        <button className="flex-1 bg-muted-foreground text-white font-bold h-14 text-base">
+        <button className="flex-1 bg-muted-foreground text-background font-bold h-14 text-base">
           임시저장
         </button>
         <button className="flex-1 bg-primary text-primary-foreground font-bold h-14 text-base">

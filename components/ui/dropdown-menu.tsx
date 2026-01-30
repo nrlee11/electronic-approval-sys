@@ -43,7 +43,7 @@ function DropdownMenuContent({
         <MenuPrimitive.Popup
           className={cn(
             "bg-popover text-popover-foreground border border-border shadow-md rounded-md p-1",
-            "max-h-[var(--available-height)] w-auto min-w-20 origin-[var(--transform-origin)] overflow-x-hidden overflow-y-auto",
+            "max-h-[var(--available-height)] w-[var(--anchor-width)] min-w-[var(--anchor-width)] origin-[var(--transform-origin)] overflow-x-hidden overflow-y-auto",
             "data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95",
             "outline-none",
             className,

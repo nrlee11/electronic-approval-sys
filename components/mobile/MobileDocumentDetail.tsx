@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { ChevronLeft, CheckCircle2, ChevronRight } from "lucide-react";
+import {
+  ChevronLeft,
+  CheckCircle2,
+  ChevronRight,
+  ChevronDown,
+  ChevronUp,
+} from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 interface MobileDocumentDetailProps {
@@ -107,23 +113,69 @@ const MobileDocumentDetail: React.FC<MobileDocumentDetailProps> = ({
 
         {/* Reference */}
         <div className="mt-4">
-          <button className="w-full flex items-center justify-between p-2 bg-background border border-border rounded-md">
+          <button className="w-full flex items-center justify-between p-4 bg-background border border-border rounded-md">
             <div className="text-sm text-muted-foreground">
               참조 <span className="text-foreground font-medium">1</span>
             </div>
             <ChevronRight />
           </button>
         </div>
-      </div>
 
-      {/* Bottom Action Bar */}
-      <div className="fixed bottom-0 left-0 right-0 bg-background border-t border-border p-4 flex gap-3 pb-safe">
-        <button className="flex-1 bg-destructive/10 text-destructive font-bold py-3 rounded-lg text-sm">
-          반려
-        </button>
-        <button className="flex-1 bg-primary text-primary-foreground font-bold py-3 rounded-lg text-sm">
-          승인
-        </button>
+        {/* Draft Content (기안내용) */}
+        <div className="mt-6">
+          <div className="flex items-center justify-between mb-3 border-b border-border pb-3">
+            <h3 className="text-sm font-bold text-foreground">기안내용</h3>
+            <button
+              onClick={() => setShowContent((v) => !v)}
+              className="text-muted-foreground"
+            >
+              {showContent ? <ChevronUp /> : <ChevronDown />}
+            </button>
+          </div>
+
+          {showContent && (
+            <div className="bg-background border border-border radius-md p-4">
+              <p className="text-foreground leading-relaxed mb-4">
+                안녕하세요.
+                <br />
+                디자인시스템 개발 요청 합니다.
+              </p>
+            </div>
+          )}
+        </div>
+
+        {/* Opinions (결재의견) */}
+        <div className="mt-6">
+          <div className="flex items-center justify-between mb-3 border-b border-border pb-3">
+            <h3 className="text-sm font-bold text-foreground">
+              결재의견{" "}
+              <span className="text-muted-foreground font-normal">1</span>
+            </h3>
+            <button
+              onClick={() => setShowOpinions((v) => !v)}
+              className="text-muted-foreground"
+            >
+              {showOpinions ? <ChevronUp /> : <ChevronDown />}
+            </button>
+          </div>
+
+          {showOpinions && (
+            <div className="bg-white border border-border rounded-md p-4">
+              <div className="flex items-start justify-between mb-2">
+                <Badge variant="primary">승인</Badge>
+                <div className="text-xs text-muted-foreground">
+                  2025.12.26 17:31
+                </div>
+              </div>
+
+              <div className="text-foreground mb-3">승인하였습니다.</div>
+
+              <div className="text-sm text-muted-foreground">
+                이나라 (nrlee) | 디자인팀
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
