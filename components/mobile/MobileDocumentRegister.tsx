@@ -66,14 +66,14 @@ const MobileDocumentRegister: React.FC<{ onBack?: () => void }> = ({
       <div className="border-t border-border/60 mb-4" />
 
       {/* List */}
-      <div className="bg-card rounded-t-lg overflow-hidden">
+      <div>
         <button
           onClick={() => {
             try {
               window.location.hash = "#/document-detail";
             } catch (e) {}
           }}
-          className="w-full text-left p-4 border-b border-border flex items-start justify-between bg-background"
+          className="w-full text-left p-4 radius-lg border border-border flex items-start justify-between bg-popover"
         >
           <div className="flex-1">
             <div className="mb-2">
