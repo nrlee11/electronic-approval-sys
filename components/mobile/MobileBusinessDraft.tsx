@@ -180,12 +180,12 @@ const MobileBusinessDraft: React.FC<MobileBusinessDraftProps> = ({
           </div>
           {/* Info Banner */}
           <div className="bg-example-content border border-brand-blue1/20 p-5 radius-lg flex items-start gap-3">
-            <div className="bg-example-content p-1.5 rounded-full">
-              <Info size={18} className="text-brand-blue3" />
+            <div className="bg-example-content p-0.5 rounded-full">
+              <Info size={18} className="text-primary" />
             </div>
             <div className="flex flex-col gap-0.5">
               <p className="font-bold text-primary text-sm">안내</p>
-              <p className="text-sm text-brand-blue4">업무기안 작성하세요.</p>
+              <p className="text-sm text-primary">업무기안 작성하세요.</p>
             </div>
           </div>
         </div>

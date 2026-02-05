@@ -113,6 +113,9 @@ module.exports = {
         // example
         "example-content": "var(--example-content)",
         "example-content-foreground": "var(--example-content-foreground)",
+
+        "example-content2": "var(--example-content2)",
+        "example-content2-fore  ground": "var(--example-content2-foreground)",
       },
     },
   },

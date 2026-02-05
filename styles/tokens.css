@@ -71,6 +71,8 @@
   --example-content: oklch(96.916% 0.01278 244.482);
   --example-content-foreground: oklch(0.145 0 0);
 
+  --example-content2: oklch(0.95 0.02 263.42);
+  --example-content2-foreground: oklch(0.145 0 0);
   /* =========================
    Text
    ========================= */
@@ -171,7 +173,7 @@
      ========================= */
 
   --background: oklch(0.145 0 0);
-  --background-foreground: oklch(0.985 0 0);
+  --background-foreground: oklch(0.985 0 0); 
 
   --card: oklch(0.18 0.004 260);
   --card-foreground: oklch(0.985 0 0);
@@ -181,6 +183,9 @@
 
   --example-content: oklch(40.98% 0.09753 251.504);
   --example-content-foreground: oklch(0.985 0 0);
+
+  --example-content2: oklch(0.25 0.03 263.42);
+  --example-content2-foreground: oklch(0.985 0 0);
 
   /* =========================
      Text

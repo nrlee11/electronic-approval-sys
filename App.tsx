@@ -273,7 +273,8 @@ const App: React.FC = () => {
         {/* This keeps MobileSidebar simpler and allows it to dispatch events without direct prop plumbing. */}
 
         <main className="min-h-screen pb-20">
-          {mobileTab === "home" && <MobileDashboard status={status} />}
+         {mobileTab === "home" && (<MobileDashboard status={status} onNavigate={(page) => mobileGo(page as PageType)} />
+)}
           {mobileTab === "approvals" && (
             <MobileApprovals
               initialTab={(() => {

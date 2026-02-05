@@ -190,12 +190,12 @@ const DraftForm: React.FC = () => {
 
       {/* Info Banner */}
       <div className="bg-example-content border border-brand-blue1/20 p-5 radius-lg flex items-start gap-3">
-        <div className="bg-example-content p-1.5 rounded-full">
-          <Info size={18} className="text-brand-blue3" />
+        <div className="bg-example-content p-0.5 rounded-full">
+          <Info size={18} className="text-primary" />
         </div>
         <div className="flex flex-col gap-0.5">
           <p className="font-bold text-primary text-sm">작성 안내</p>
-          <p className="text-sm text-brand-blue4">
+          <p className="text-sm text-primary">
             업무기안 내용을 상세히 기술해 주세요. 상신 후에는 수정이
             불가능합니다.
           </p>

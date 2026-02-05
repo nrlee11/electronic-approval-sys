@@ -1,12 +1,13 @@
 import React from "react";
-import { PenLine, Send, Clock, BookOpen, AlertCircle } from "lucide-react"; // Using icons to match visually
+import { PenLine, Send, Folder, BookOpen, AlertCircle } from "lucide-react"; // Using icons to match visually
 import { StatusCount } from "../../types";
 
 interface MobileDashboardProps {
   status: StatusCount;
+  onNavigate: (page: string) => void;
 }
 
-const MobileDashboard: React.FC<MobileDashboardProps> = ({ status }) => {
+const MobileDashboard: React.FC<MobileDashboardProps> = ({ status, onNavigate }) => {
   return (
     <div className="min-h-screen bg-background pb-32 pt-20 px-5 relative">
       {/* Greeting Section */}
@@ -22,7 +23,7 @@ const MobileDashboard: React.FC<MobileDashboardProps> = ({ status }) => {
       {/* Dashboard Cards Stack */}
       <div className="space-y-3">
         {/* 1. 상신한 문서 (Blue) */}
-        <div className="bg-example-content radius-lg p-5 flex items-center justify-between h-20 shadow-sm animate-fadeUp stagger-0">
+        <div className="bg-example-content2 radius-lg p-5 flex items-center justify-between h-20 shadow-sm animate-fadeUp stagger-0">
           <div className="flex items-center gap-3 text-foreground">
             <Send size={20} className="text-muted-foreground" />
             <span className="font-bold text-sm">상신한 문서</span>
@@ -38,9 +39,9 @@ const MobileDashboard: React.FC<MobileDashboardProps> = ({ status }) => {
         </div>
 
         {/* 2. 결재전 문서 (Blue) */}
-        <div className="bg-example-content radius-lg p-5 flex items-center justify-between h-20 shadow-sm animate-fadeUp stagger-1">
+        <div className="bg-example-content2 radius-lg p-5 flex items-center justify-between h-20 shadow-sm animate-fadeUp stagger-1">
           <div className="flex items-center gap-3 text-foreground">
-            <Clock size={20} className="text-muted-foreground" />
+            <Folder size={20} className="text-muted-foreground" />
             <span className="font-bold text-sm">결재전 문서</span>
           </div>
           <div className="flex items-center gap-1">
@@ -107,7 +108,9 @@ const MobileDashboard: React.FC<MobileDashboardProps> = ({ status }) => {
       </footer>
 
       {/* Floating Action Button (FAB) */}
-      <button className="fixed bottom-24 right-5 w-14 h-14 bg-primary text-primary-foreground rounded-full shadow-lg flex items-center justify-center hover:bg-primary-hover transition-colors z-50">
+      <button 
+      onClick={() => onNavigate("forms")}
+      className="fixed bottom-24 right-5 w-14 h-14 bg-primary text-primary-foreground rounded-full shadow-lg flex items-center justify-center hover:bg-primary-hover transition-colors z-50">
         <PenLine size={24} strokeWidth={2.5} />
       </button>
     </div>

@@ -12,9 +12,9 @@ const FormCard: React.FC<FormCardProps & { onClick: () => void }> = ({
   return (
     <div
       onClick={onClick}
-      className="group bg-card radius-sm border border-border overflow-hidden h-44 flex flex-col hover:border-primary cursor-pointer transition shadow-sm"
+      className="group bg-card radius-sm border border-example-content2 overflow-hidden h-44 flex flex-col hover:border-primary cursor-pointer transition shadow-sm"
     >
-      <div className="bg-muted border-b border-border p-3 h-[64px] flex items-center justify-center text-center transition-colors">
+      <div className="bg-example-content2 border-b border-border p-3 h-[64px] flex items-center justify-center text-center transition-colors">
         <span className="text-[13px] font-bold text-foreground leading-tight break-keep">
           {form.title}
         </span>

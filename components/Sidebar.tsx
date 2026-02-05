@@ -182,7 +182,7 @@ const Sidebar: React.FC<{ onNavigate?: (page: string) => void }> = ({
             }
             onNavigate?.("forms");
           }}
-          className="w-full h-[79px] flex items-center justify-between shadow-sm bg-background text-foreground font-bold px-6 border border-transparent hover:text-primary transition-all group"
+          className="w-full h-[79px] flex items-center justify-between shadow-sm bg-example-content text-foreground font-bold px-6 border border-transparent hover:text-primary transition-all group"
         >
           <span>기안작성</span>
           <PenLine size={20} className="text-muted-foreground group-hover:text-primary transition-transform" />
