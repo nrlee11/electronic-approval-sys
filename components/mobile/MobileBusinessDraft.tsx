@@ -3,6 +3,7 @@ import {
   ChevronLeft,
   ChevronDown,
   User,
+  Search,
   Settings,
   Info,
   Plus,
@@ -29,6 +30,7 @@ const MobileBusinessDraft: React.FC<MobileBusinessDraftProps> = ({
   onBack,
 }) => {
   const [disclosure, setDisclosure] = useState("dept"); // public, dept, private
+  const [showApprovalSettings, setShowApprovalSettings] = useState(false);
 
   return (
     <div className="bg-background min-h-screen pb-24 flex flex-col">
@@ -151,7 +153,12 @@ const MobileBusinessDraft: React.FC<MobileBusinessDraftProps> = ({
             </div>
           </div>
 
-          <Button variants="primary" size="lg" className="w-full">
+          <Button
+            variants="primary"
+            size="lg"
+            className="w-full"
+            onClick={() => setShowApprovalSettings(true)}
+          >
             결재선 설정
           </Button>
           {/* Additional Settings */}
@@ -253,6 +260,33 @@ const MobileBusinessDraft: React.FC<MobileBusinessDraftProps> = ({
           상신하기
         </button>
       </div>
+      {/* Approval Settings Modal (mobile full-screen) */}
+      {showApprovalSettings && (
+        <div className="fixed inset-0 z-40 bg-background flex flex-col">
+          <header className="flex items-center h-14 px-4 border-b border-border">
+            <button
+              onClick={() => setShowApprovalSettings(false)}
+              className="p-2 -ml-2 text-foreground"
+            >
+              <ChevronLeft size={24} />
+            </button>
+            <h2 className="flex-1 text-center text-base font-bold text-foreground">
+              결재선 설정
+            </h2>
+            <div className="w-8" />
+          </header>
+
+          <div className="p-4 flex flex-col flex-1">
+            <label className="text-sm text-muted-foreground mb-2">
+              결재선 추가
+            </label>
+            <div className="relative">
+              <Input placeholder="부서명, ID 또는 이름 입력" />
+              <Search className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground w-4 h-4" />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

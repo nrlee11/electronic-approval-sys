@@ -64,7 +64,7 @@ const MobileSidebar: React.FC<MobileSidebarProps> = ({
         {/* Action */}
         <div className="p-4 pb-2">
           <Button
-            className="w-full bg-primary hover:bg-primary-hover text-primary-foreground h-12 text-md font-bold"
+            className="w-full bg-primary hover:bg-primary-hover text-primary-foreground h-10 text-md font-bold"
             onClick={() => {
               onNavigate?.("forms");
               onClose();

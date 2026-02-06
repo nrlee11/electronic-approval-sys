@@ -38,7 +38,7 @@ const MobileInbox: React.FC<{ initialTab?: string; onBack?: () => void }> = ({
         ))}
       </div>
 
-       <div className="flex items-center justify-between mb-4">
+      <div className="flex items-center justify-between mb-4">
         <button
           onClick={() => {
             /* future: open quick filter */
@@ -64,7 +64,6 @@ const MobileInbox: React.FC<{ initialTab?: string; onBack?: () => void }> = ({
           </svg>
         </div>
       </div>
-
 
       {/* Count + Filters */}
       <div className="mb-4">
