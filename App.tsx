@@ -21,19 +21,9 @@ import RetrievedDocuments from "./pages/RetrievedDocuments";
 import AdminPage from "./pages/AdminPage";
 import { UserInfo, TabType, StatusCount } from "./types";
 import { Button } from "./components/ui/button";
-import {
-  Table,
-  TableHeader,
-  TableBody,
-  TableFooter,
-  TableHead,
-  TableRow,
-  TableCell,
-  TableCaption,
-} from "@/components/ui/table";
+import { Table, TableHeader, TableHead, TableRow } from "@/components/ui/table";
 import { useIsMobile } from "./hooks/use-mobile";
 import MobileHeader from "./components/mobile/MobileHeader";
-// import MobileBottomNav from "./components/mobile/MobileBottomNav";
 import MobileDashboard from "./components/mobile/MobileDashboard";
 import MobileDocumentDetail from "./components/mobile/MobileDocumentDetail";
 import MobileSidebar from "./components/mobile/MobileSidebar";
@@ -65,94 +55,17 @@ type PageType =
 
 const App: React.FC = () => {
   const isMobile = useIsMobile();
+
+  // ✅ 페이지는 PC/모바일 공통 single source
   const [currentPage, setCurrentPage] = useState<PageType>("dashboard");
+
+  // (PC 대시보드용)
   const [activeTab, setActiveTab] = useState<TabType>(TabType.SUBMITTED);
-  const [mobileTab, setMobileTab] = useState("home"); // home, approvals, write, documents, menu
+
+  // (모바일 UI 표시용 탭 값 - 페이지 결정에는 사용하지 않음)
+  const [mobileTab, setMobileTab] = useState("home");
+
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-  useEffect(() => {
-    const checkHash = () => {
-      const hash = (window.location.hash || "").replace("#", "");
-      if (hash === "/submitted" || hash === "submitted") {
-        setCurrentPage("submitted");
-      } else if (hash === "/pending-approval" || hash === "pending-approval") {
-        setCurrentPage("pending-approval");
-      } else if (
-        hash === "/approval-progress" ||
-        hash === "approval-progress"
-      ) {
-        setCurrentPage("approval-progress");
-      } else if (
-        hash === "/approval-completed" ||
-        hash === "approval-completed"
-      ) {
-        setCurrentPage("approval-completed");
-      } else if (
-        hash === "/approval-rejected" ||
-        hash === "approval-rejected"
-      ) {
-        setCurrentPage("approval-rejected");
-      } else if (hash === "/forms" || hash === "forms") {
-        setCurrentPage("forms");
-      } else if (hash === "/completed" || hash === "completed") {
-        setCurrentPage("completed");
-      } else if (hash === "/saved" || hash === "saved") {
-        setCurrentPage("saved");
-      } else if (hash === "/rejected" || hash === "rejected") {
-        setCurrentPage("rejected");
-      } else if (hash === "/returned" || hash === "returned") {
-        setCurrentPage("returned");
-      } else if (hash === "/retrieved" || hash === "retrieved") {
-        setCurrentPage("retrieved");
-      } else if (hash === "/pending-receipt" || hash === "pending-receipt") {
-        setCurrentPage("pending-receipt");
-      } else if (
-        hash === "/receipt-completed" ||
-        hash === "receipt-completed"
-      ) {
-        setCurrentPage("receipt-completed");
-      } else if (
-        hash === "/document-register" ||
-        hash === "document-register"
-      ) {
-        setCurrentPage("document-register");
-      } else if (hash === "/document-detail" || hash === "document-detail") {
-        setCurrentPage("document-detail");
-        setMobileTab("approvals");
-      } else if (hash === "/admin" || hash === "admin") {
-        setCurrentPage("admin");
-      } else {
-        setCurrentPage("dashboard");
-      }
-    };
-
-    checkHash();
-    window.addEventListener("hashchange", checkHash);
-    return () => window.removeEventListener("hashchange", checkHash);
-  }, []);
-
-  // Listen for navigation events dispatched from MobileSidebar subitems
-  useEffect(() => {
-    const onMobileNavigate = (e: Event) => {
-      const detail = (e as CustomEvent)?.detail as
-        | { page?: string }
-        | undefined;
-      const page = detail?.page as PageType | undefined;
-      if (!page) return;
-      mobileGo(page);
-    };
-
-    window.addEventListener(
-      "mobile:navigate",
-      onMobileNavigate as EventListener,
-    );
-    return () =>
-      window.removeEventListener(
-        "mobile:navigate",
-        onMobileNavigate as EventListener,
-      );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const user: UserInfo = {
     name: "이나라",
@@ -186,6 +99,7 @@ const App: React.FC = () => {
         return "데이터가 없습니다.";
     }
   };
+
   const tableHeaders: Record<TabType, string[]> = {
     [TabType.SUBMITTED]: ["기안양식", "기안제목", "결재대기자", "상신일시"],
     [TabType.TO_APPROVE]: [
@@ -204,15 +118,16 @@ const App: React.FC = () => {
     ],
   };
 
-  // --- Mobile Layout Rendering ---
-  const mobileGo = (page: PageType) => {
-    const approvals = new Set([
+  // ✅ page -> mobileTab 계산 (UI 용)
+  const getMobileTabByPage = (page: PageType) => {
+    const approvals = new Set<PageType>([
       "pending-approval",
       "approval-progress",
       "approval-completed",
       "approval-rejected",
+      "document-detail",
     ]);
-    const drafts = new Set([
+    const drafts = new Set<PageType>([
       "submitted",
       "completed",
       "saved",
@@ -220,45 +135,215 @@ const App: React.FC = () => {
       "returned",
       "retrieved",
     ]);
-    const inbox = new Set(["pending-receipt", "receipt-completed"]);
+    const inbox = new Set<PageType>(["pending-receipt", "receipt-completed"]);
 
-    setCurrentPage(page);
-
-    if (page === "dashboard") {
-      setMobileTab("home");
-    } else if (approvals.has(page)) {
-      setMobileTab("approvals");
-    } else if (drafts.has(page)) {
-      setMobileTab("documents");
-    } else if (page === "document-register") {
-      setMobileTab("ledger");
-    } else if (inbox.has(page)) {
-      setMobileTab("inbox");
-    } else if (page === "forms") {
-      setMobileTab("write");
-    } else {
-      setMobileTab("home");
-    }
-
-    setIsSidebarOpen(false);
-
-    // ✅ URL도 항상 동기화
-    window.location.hash = page === "dashboard" ? "#/" : `#/${page}`;
+    if (page === "dashboard") return "home";
+    if (approvals.has(page)) return "approvals";
+    if (drafts.has(page)) return "documents";
+    if (page === "document-register") return "ledger";
+    if (inbox.has(page)) return "inbox";
+    if (page === "forms" || page === "business-draft") return "write";
+    if (page === "admin") return "menu";
+    return "home";
   };
 
-  if (isMobile) {
-    if (currentPage === "document-detail") {
-      return (
-        <MobileDocumentDetail
-          onBack={() => {
-            setCurrentPage("dashboard");
-            setMobileTab("approvals");
-            window.history.back();
-          }}
-        />
-      );
-    }
+  // ✅ 모바일/PC 공통: "페이지 이동" 함수 (기존 기능 최대 유지: currentPage만 바꿈)
+  const go = (page: PageType) => {
+    setCurrentPage(page);
+    setMobileTab(getMobileTabByPage(page)); // 모바일 UI 탭도 자연스럽게 맞춰줌
+    setIsSidebarOpen(false);
+  };
 
+  // ✅ hash -> currentPage 동기화 (있을 때만)
+  useEffect(() => {
+    const checkHash = () => {
+      const hash = (window.location.hash || "").replace("#", "");
+
+      let nextPage: PageType = "dashboard";
+      if (hash === "/submitted" || hash === "submitted") nextPage = "submitted";
+      else if (hash === "/pending-approval" || hash === "pending-approval")
+        nextPage = "pending-approval";
+      else if (hash === "/approval-progress" || hash === "approval-progress")
+        nextPage = "approval-progress";
+      else if (hash === "/approval-completed" || hash === "approval-completed")
+        nextPage = "approval-completed";
+      else if (hash === "/approval-rejected" || hash === "approval-rejected")
+        nextPage = "approval-rejected";
+      else if (hash === "/forms" || hash === "forms") nextPage = "forms";
+      else if (hash === "/business-draft" || hash === "business-draft")
+        nextPage = "business-draft";
+      else if (hash === "/completed" || hash === "completed")
+        nextPage = "completed";
+      else if (hash === "/saved" || hash === "saved") nextPage = "saved";
+      else if (hash === "/rejected" || hash === "rejected")
+        nextPage = "rejected";
+      else if (hash === "/returned" || hash === "returned")
+        nextPage = "returned";
+      else if (hash === "/retrieved" || hash === "retrieved")
+        nextPage = "retrieved";
+      else if (hash === "/pending-receipt" || hash === "pending-receipt")
+        nextPage = "pending-receipt";
+      else if (hash === "/receipt-completed" || hash === "receipt-completed")
+        nextPage = "receipt-completed";
+      else if (hash === "/document-register" || hash === "document-register")
+        nextPage = "document-register";
+      else if (hash === "/document-detail" || hash === "document-detail")
+        nextPage = "document-detail";
+      else if (hash === "/admin" || hash === "admin") nextPage = "admin";
+
+      setCurrentPage(nextPage);
+      setMobileTab(getMobileTabByPage(nextPage));
+    };
+
+    checkHash();
+    window.addEventListener("hashchange", checkHash);
+    return () => window.removeEventListener("hashchange", checkHash);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // ✅ mobile sidebar custom event 유지 (기존 기능 유지)
+  useEffect(() => {
+    const onMobileNavigate = (e: Event) => {
+      const detail = (e as CustomEvent)?.detail as
+        | { page?: string }
+        | undefined;
+      const page = detail?.page as PageType | undefined;
+      if (!page) return;
+      go(page);
+    };
+    window.addEventListener(
+      "mobile:navigate",
+      onMobileNavigate as EventListener,
+    );
+    return () =>
+      window.removeEventListener(
+        "mobile:navigate",
+        onMobileNavigate as EventListener,
+      );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // ✅ 모바일 화면은 "mobileTab"이 아니라 "currentPage"로 렌더링 (핵심)
+  const renderMobilePage = () => {
+    switch (currentPage) {
+      case "dashboard":
+        return (
+          <MobileDashboard
+            status={status}
+            onNavigate={(page) => go(page as PageType)}
+          />
+        );
+
+      case "document-detail":
+        return (
+          <MobileDocumentDetail
+            onBack={() => {
+              window.history.back();
+              // history.back은 hashchange를 트리거할 수 있으니 state는 checkHash가 맞춰줌
+            }}
+          />
+        );
+
+      case "document-register":
+        return <MobileDocumentRegister onBack={() => go("dashboard")} />;
+
+      case "pending-receipt":
+        return (
+          <MobileInbox initialTab="수신전" onBack={() => go("dashboard")} />
+        );
+
+      case "receipt-completed":
+        return (
+          <MobileInbox initialTab="완료된" onBack={() => go("dashboard")} />
+        );
+
+      case "pending-approval":
+        return (
+          <MobileApprovals initialTab="결재전" onBack={() => go("dashboard")} />
+        );
+
+      case "approval-progress":
+        return (
+          <MobileApprovals initialTab="진행중" onBack={() => go("dashboard")} />
+        );
+
+      case "approval-completed":
+        return (
+          <MobileApprovals initialTab="완료된" onBack={() => go("dashboard")} />
+        );
+
+      case "approval-rejected":
+        return (
+          <MobileApprovals initialTab="반려된" onBack={() => go("dashboard")} />
+        );
+
+      case "submitted":
+        return (
+          <MobileDrafts initialTab="상신한" onBack={() => go("dashboard")} />
+        );
+
+      case "completed":
+        return (
+          <MobileDrafts initialTab="완료된" onBack={() => go("dashboard")} />
+        );
+
+      case "saved":
+        return (
+          <MobileDrafts initialTab="저장된" onBack={() => go("dashboard")} />
+        );
+
+      case "rejected":
+        return (
+          <MobileDrafts initialTab="반려된" onBack={() => go("dashboard")} />
+        );
+
+      case "returned":
+        return (
+          <MobileDrafts initialTab="반송된" onBack={() => go("dashboard")} />
+        );
+
+      case "retrieved":
+        return (
+          <MobileDrafts initialTab="회수된" onBack={() => go("dashboard")} />
+        );
+
+      case "forms":
+        return (
+          <div className="pt-16 pb-20 px-4">
+            <h2 className="text-lg font-bold mb-4">기안 양식함</h2>
+            <FormLibrary
+              onBack={() => go("dashboard")}
+              onFormSelect={(formId) => {
+                // 기존 로직 유지: 특정 양식 선택 시 draft로
+                if (formId === "1") go("business-draft");
+                else go("business-draft");
+              }}
+            />
+          </div>
+        );
+
+      case "business-draft":
+        return <MobileBusinessDraft onBack={() => go("forms")} />;
+
+      case "admin":
+        return (
+          <div className="pt-16 pb-20 px-4">
+            <AdminPage />
+          </div>
+        );
+
+      default:
+        return (
+          <MobileDashboard
+            status={status}
+            onNavigate={(page) => go(page as PageType)}
+          />
+        );
+    }
+  };
+
+  // ------------------ MOBILE ------------------
+  if (isMobile) {
     return (
       <div className="min-h-screen bg-background text-foreground font-sans">
         <MobileHeader onMenuClick={() => setIsSidebarOpen(true)} />
@@ -266,106 +351,18 @@ const App: React.FC = () => {
         <MobileSidebar
           isOpen={isSidebarOpen}
           onClose={() => setIsSidebarOpen(false)}
-          onNavigate={(page) => mobileGo(page as PageType)}
+          onNavigate={(page) => go(page as PageType)}
         />
 
-        {/* listen for custom events from MobileSidebar subitems (for convenience) */}
-        {/* This keeps MobileSidebar simpler and allows it to dispatch events without direct prop plumbing. */}
+        <main className="min-h-screen pb-20">{renderMobilePage()}</main>
 
-        <main className="min-h-screen pb-20">
-         {mobileTab === "home" && (<MobileDashboard status={status} onNavigate={(page) => mobileGo(page as PageType)} />
-)}
-          {mobileTab === "approvals" && (
-            <MobileApprovals
-              initialTab={(() => {
-                switch (currentPage) {
-                  case "pending-approval":
-                    return "결재전";
-                  case "approval-progress":
-                    return "진행중";
-                  case "approval-completed":
-                    return "완료된";
-                  case "approval-rejected":
-                    return "반려된";
-                  default:
-                    return "결재전";
-                }
-              })()}
-              onBack={() => setMobileTab("home")}
-            />
-          )}
-          {mobileTab === "inbox" && (
-            <MobileInbox
-              initialTab={(() => {
-                switch (currentPage) {
-                  case "pending-receipt":
-                    return "수신전";
-                  case "receipt-completed":
-                    return "완료된";
-                  default:
-                    return "수신전";
-                }
-              })()}
-              onBack={() => setMobileTab("home")}
-            />
-          )}
-          {mobileTab === "ledger" && (
-            <MobileDocumentRegister onBack={() => setMobileTab("home")} />
-          )}
-          {mobileTab === "documents" && (
-            <MobileDrafts
-              initialTab={(() => {
-                // derive tab label from currentPage
-                switch (currentPage) {
-                  case "submitted":
-                    return "상신한";
-                  case "completed":
-                    return "완료된";
-                  case "saved":
-                    return "저장된";
-                  case "rejected":
-                    return "반려된";
-                  case "returned":
-                    return "반송된";
-                  case "retrieved":
-                    return "회수된";
-                  default:
-                    return "상신한";
-                }
-              })()}
-              onBack={() => setMobileTab("home")}
-            />
-          )}
-          {mobileTab === "write" && (
-            <div className="pt-16 pb-20 px-4">
-              <h2 className="text-lg font-bold mb-4">기안 작성</h2>
-              <FormLibrary
-                onBack={() => setMobileTab("home")}
-                onFormSelect={(formId) => setMobileTab("write-form")}
-              />
-            </div>
-          )}
-          {mobileTab === "write-form" && (
-            <MobileBusinessDraft onBack={() => setMobileTab("write")} />
-          )}
-          {mobileTab === "menu" && (
-            <div className="pt-16 pb-20 px-4">
-              <h2 className="text-lg font-bold mb-4">전체 메뉴</h2>
-              <ul className="space-y-4">
-                <li className="p-4 bg-card rounded-lg shadow-sm">내 정보</li>
-                <li className="p-4 bg-card rounded-lg shadow-sm">환경설정</li>
-                <li className="p-4 bg-card rounded-lg shadow-sm">로그아웃</li>
-              </ul>
-            </div>
-          )}
-        </main>
-
+        {/* mobileTab은 이제 페이지 결정이 아니라 UI 용 상태로만 남겨둠 */}
         {/* <MobileBottomNav activeTab={mobileTab} onTabChange={setMobileTab} /> */}
       </div>
     );
   }
 
-  // --- Desktop Layout Rendering ---
+  // ------------------ DESKTOP ------------------
   return (
     <div className="min-h-screen bg-background text-foreground font-sans">
       <Header user={user} />
@@ -374,7 +371,7 @@ const App: React.FC = () => {
         <Sidebar
           onNavigate={(page) => {
             console.log("[App] onNavigate called with:", page);
-            setCurrentPage(page as PageType);
+            go(page as PageType); // ✅ PC도 동일 go 사용
           }}
         />
 
@@ -467,20 +464,21 @@ const App: React.FC = () => {
                   </Table>
                   <EmptyState message={getEmptyMessage()} />
                 </section>
+
                 {/* Recent Forms */}
                 <section>
                   <div className="flex items-center justify-between mb-4 border-b border-border pb-3">
                     <h2 className="typo-body text-foreground font-bold">
                       최근 사용한 양식
                     </h2>
-
-                    <Button>기안 양식함</Button>
+                    <Button onClick={() => go("forms")}>기안 양식함</Button>
                   </div>
 
                   <div className="border-b border-border/60">
                     <EmptyState message="최근 사용한 양식이 존재하지 않습니다." />
                   </div>
                 </section>
+
                 {/* Footer */}
                 <footer className="mt-16 pt-8 pb-10 flex flex-col md:flex-row justify-between items-center typo-kicker text-muted-foreground gap-4">
                   <div className="flex items-center gap-4">
@@ -502,34 +500,32 @@ const App: React.FC = () => {
                 </footer>
               </>
             ) : currentPage === "submitted" ? (
-              <SubmittedDocuments onBack={() => setCurrentPage("dashboard")} />
+              <SubmittedDocuments onBack={() => go("dashboard")} />
             ) : currentPage === "pending-approval" ? (
-              <PendingApprovals onBack={() => setCurrentPage("dashboard")} />
+              <PendingApprovals onBack={() => go("dashboard")} />
             ) : currentPage === "approval-progress" ? (
-              <ApprovalProgress onBack={() => setCurrentPage("dashboard")} />
+              <ApprovalProgress onBack={() => go("dashboard")} />
             ) : currentPage === "approval-completed" ? (
-              <ApprovalCompleted onBack={() => setCurrentPage("dashboard")} />
+              <ApprovalCompleted onBack={() => go("dashboard")} />
             ) : currentPage === "approval-rejected" ? (
-              <ApprovalRejected onBack={() => setCurrentPage("dashboard")} />
+              <ApprovalRejected onBack={() => go("dashboard")} />
             ) : currentPage === "pending-receipt" ? (
-              <PendingReceipt onBack={() => setCurrentPage("dashboard")} />
+              <PendingReceipt onBack={() => go("dashboard")} />
             ) : currentPage === "receipt-completed" ? (
-              <ReceiptCompleted onBack={() => setCurrentPage("dashboard")} />
+              <ReceiptCompleted onBack={() => go("dashboard")} />
             ) : currentPage === "document-register" ? (
-              <DocumentRegister onBack={() => setCurrentPage("dashboard")} />
+              <DocumentRegister onBack={() => go("dashboard")} />
             ) : currentPage === "document-detail" ? (
               <DocumentDetail onBack={() => window.history.back()} />
             ) : currentPage === "forms" ? (
               <FormLibrary
-                onBack={() => setCurrentPage("dashboard")}
+                onBack={() => go("dashboard")}
                 onFormSelect={(formId) => {
-                  if (formId === "1") {
-                    setCurrentPage("business-draft");
-                  }
+                  if (formId === "1") go("business-draft");
                 }}
               />
             ) : currentPage === "business-draft" ? (
-              <BusinessDraft onBack={() => setCurrentPage("forms")} />
+              <BusinessDraft onBack={() => go("forms")} />
             ) : currentPage === "completed" ? (
               <CompletedDocuments />
             ) : currentPage === "saved" ? (
