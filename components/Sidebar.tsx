@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { ChevronDown, Edit2, ChevronLeft, ChevronRight, PenLine } from "lucide-react";
+import {
+  ChevronDown,
+  Edit2,
+  ChevronLeft,
+  ChevronRight,
+  PenLine,
+} from "lucide-react";
 
 interface NavItemProps {
   label: string;
@@ -27,14 +33,15 @@ const NavItem: React.FC<NavItemProps> = ({
           if (hasSub) setIsExpanded(!isExpanded);
           else onClick?.();
         }}
-      className={`w-full border-b border-border flex items-center justify-between px-6 py-3 text-sm text-muted-foreground hover:text-primary transition-all group hover:underline ${className}`}
+        className={`w-full border-b border-border flex items-center justify-between px-6 py-3 text-sm text-muted-foreground hover:text-primary transition-all group hover:underline ${className}`}
       >
         <span className="font-medium">{label}</span>
         {hasSub && (
           <ChevronRight
             size={16}
-            className={`text-muted-foreground group-hover:text-primary transition-transform ${isExpanded ? "rotate-90" : ""
-              }`}
+            className={`text-muted-foreground group-hover:text-primary transition-transform ${
+              isExpanded ? "rotate-90" : ""
+            }`}
           />
         )}
       </button>
@@ -69,7 +76,7 @@ const Sidebar: React.FC<{ onNavigate?: (page: string) => void }> = ({
       if (subItem === "상신한") {
         try {
           window.location.hash = "#/submitted";
-        } catch (e) { }
+        } catch (e) {}
         onNavigate?.("submitted");
         return;
       }
@@ -77,7 +84,7 @@ const Sidebar: React.FC<{ onNavigate?: (page: string) => void }> = ({
       if (subItem === "완료된") {
         try {
           window.location.hash = "#/completed";
-        } catch (e) { }
+        } catch (e) {}
         onNavigate?.("completed");
         return;
       }
@@ -85,7 +92,7 @@ const Sidebar: React.FC<{ onNavigate?: (page: string) => void }> = ({
       if (subItem === "저장된") {
         try {
           window.location.hash = "#/saved";
-        } catch (e) { }
+        } catch (e) {}
         onNavigate?.("saved");
         return;
       }
@@ -93,7 +100,7 @@ const Sidebar: React.FC<{ onNavigate?: (page: string) => void }> = ({
       if (subItem === "반려된") {
         try {
           window.location.hash = "#/rejected";
-        } catch (e) { }
+        } catch (e) {}
         onNavigate?.("rejected");
         return;
       }
@@ -101,7 +108,7 @@ const Sidebar: React.FC<{ onNavigate?: (page: string) => void }> = ({
       if (subItem === "반송된") {
         try {
           window.location.hash = "#/returned";
-        } catch (e) { }
+        } catch (e) {}
         onNavigate?.("returned");
         return;
       }
@@ -109,7 +116,7 @@ const Sidebar: React.FC<{ onNavigate?: (page: string) => void }> = ({
       if (subItem === "회수된") {
         try {
           window.location.hash = "#/retrieved";
-        } catch (e) { }
+        } catch (e) {}
         onNavigate?.("retrieved");
         return;
       }
@@ -117,7 +124,7 @@ const Sidebar: React.FC<{ onNavigate?: (page: string) => void }> = ({
       if (subItem === "결재전") {
         try {
           window.location.hash = "#/pending-approval";
-        } catch (e) { }
+        } catch (e) {}
         onNavigate?.("pending-approval");
         return;
       }
@@ -125,7 +132,7 @@ const Sidebar: React.FC<{ onNavigate?: (page: string) => void }> = ({
       if (subItem === "진행중") {
         try {
           window.location.hash = "#/approval-progress";
-        } catch (e) { }
+        } catch (e) {}
         onNavigate?.("approval-progress");
         return;
       }
@@ -133,7 +140,7 @@ const Sidebar: React.FC<{ onNavigate?: (page: string) => void }> = ({
       if (subItem === "완료된") {
         try {
           window.location.hash = "#/approval-completed";
-        } catch (e) { }
+        } catch (e) {}
         onNavigate?.("approval-completed");
         return;
       }
@@ -141,7 +148,7 @@ const Sidebar: React.FC<{ onNavigate?: (page: string) => void }> = ({
       if (subItem === "반려된") {
         try {
           window.location.hash = "#/approval-rejected";
-        } catch (e) { }
+        } catch (e) {}
         onNavigate?.("approval-rejected");
         return;
       }
@@ -149,7 +156,7 @@ const Sidebar: React.FC<{ onNavigate?: (page: string) => void }> = ({
       if (subItem === "수신전") {
         try {
           window.location.hash = "#/pending-receipt";
-        } catch (e) { }
+        } catch (e) {}
         onNavigate?.("pending-receipt");
         return;
       }
@@ -157,9 +164,9 @@ const Sidebar: React.FC<{ onNavigate?: (page: string) => void }> = ({
       if (subItem === "완료된") {
         try {
           window.location.hash = "#/receipt-completed";
-        } catch (e) { }
+        } catch (e) {}
         onNavigate?.("receipt-completed");
-        return; 
+        return;
       }
     }
   };
@@ -167,9 +174,9 @@ const Sidebar: React.FC<{ onNavigate?: (page: string) => void }> = ({
   return (
     <aside className="w-60 bg-background border-r border-border flex flex-col fixed top-14 left-0 bottom-0 z-20 transition-transform shadow-sm">
       {/* Collapse Toggle */}
-      <button className="absolute -right-3 top-2 bg-background border border-border p-0.5 rounded-full shadow-sm hover:bg-muted/60 z-10">
+      {/* <button className="absolute -right-3 top-2 bg-background border border-border p-0.5 rounded-full shadow-sm hover:bg-muted/60 z-10">
         <ChevronLeft size={14} className="text-muted-foreground" />
-      </button>
+      </button> */}
 
       {/* Primary Action */}
       <div className="border-b border-border">
@@ -185,50 +192,64 @@ const Sidebar: React.FC<{ onNavigate?: (page: string) => void }> = ({
           className="w-full h-[79px] flex items-center justify-between shadow-sm bg-example-content text-foreground font-bold px-6 border border-transparent hover:text-primary transition-all group"
         >
           <span>기안작성</span>
-          <PenLine size={20} className="text-muted-foreground group-hover:text-primary transition-transform" />
+          <PenLine
+            size={20}
+            className="text-muted-foreground group-hover:text-primary transition-transform"
+          />
         </button>
       </div>
 
       {/* Main Nav */}
       <nav className="flex-1 overflow-y-auto no-scrollbar">
         <ul className="space-y-0.5">
-            <NavItem 
-             className="bg-background shadow-sm"
-              label="기안함"
-              hasSub
-              subItems={["상신한", "완료된", "저장된", "반려된", "반송된", "회수된"]}
-              onSubItemClick={handleSubItemClick}
-            />  
-            <NavItem className="shadow-sm"
-              label="결재함"
-              hasSub
-              subItems={["결재전", "진행중", "완료된", "반려된"]}
-              onSubItemClick={handleSubItemClick}
-            />
-            <NavItem  className="shadow-sm"
-              label="수신함"
-              hasSub
-              subItems={["수신전", "완료된"]}
-              onSubItemClick={handleSubItemClick}
-            />
-            <NavItem  className="shadow-sm"
-              label="문서대장"
-              onClick={() => {
-                try {
-                  window.location.hash = "#/document-register";
-                } catch (e) { }
-                onNavigate?.("document-register");
-              }}
-            />
-            <NavItem  className="shadow-sm"
-              label="결재현황 [관리자]"
-              onClick={() => {
-                try {
-                  window.location.hash = "#/admin";
-                } catch (e) { }
-                onNavigate?.("admin");
-              }}
-            />
+          <NavItem
+            className="bg-background shadow-sm"
+            label="기안함"
+            hasSub
+            subItems={[
+              "상신한",
+              "완료된",
+              "저장된",
+              "반려된",
+              "반송된",
+              "회수된",
+            ]}
+            onSubItemClick={handleSubItemClick}
+          />
+          <NavItem
+            className="shadow-sm"
+            label="결재함"
+            hasSub
+            subItems={["결재전", "진행중", "완료된", "반려된"]}
+            onSubItemClick={handleSubItemClick}
+          />
+          <NavItem
+            className="shadow-sm"
+            label="수신함"
+            hasSub
+            subItems={["수신전", "완료된"]}
+            onSubItemClick={handleSubItemClick}
+          />
+          <NavItem
+            className="shadow-sm"
+            label="문서대장"
+            onClick={() => {
+              try {
+                window.location.hash = "#/document-register";
+              } catch (e) {}
+              onNavigate?.("document-register");
+            }}
+          />
+          <NavItem
+            className="shadow-sm"
+            label="결재현황 [관리자]"
+            onClick={() => {
+              try {
+                window.location.hash = "#/admin";
+              } catch (e) {}
+              onNavigate?.("admin");
+            }}
+          />
         </ul>
       </nav>
 

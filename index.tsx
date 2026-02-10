@@ -1,3 +1,4 @@
+import "react-day-picker/dist/style.css";
 import "./styles/tokens.css";
 import "./styles/globals.css";
 import React from "react";
@@ -13,5 +14,5 @@ const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>
+  </React.StrictMode>,
 );

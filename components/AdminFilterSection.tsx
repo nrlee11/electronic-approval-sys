@@ -11,6 +11,11 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { HugeiconsIcon } from "@hugeicons/react";
 import * as Icons from "@hugeicons/core-free-icons";
+import { format } from "date-fns";
+import { ko } from "date-fns/locale";
+import { DayPicker } from "react-day-picker";
+import "react-day-picker/dist/style.css";
+import { Popover } from "@base-ui/react/popover";
 interface AdminFilterSectionProps {
   onSearch: () => void;
 }
@@ -18,6 +23,14 @@ interface AdminFilterSectionProps {
 const AdminFilterSection: React.FC<AdminFilterSectionProps> = ({
   onSearch,
 }) => {
+  const [fromOpen, setFromOpen] = React.useState(false);
+  const [toOpen, setToOpen] = React.useState(false);
+
+  const [from, setFrom] = React.useState<Date | undefined>();
+  const [to, setTo] = React.useState<Date | undefined>();
+
+  const fromText = from ? format(from, "yyyy.MM.dd", { locale: ko }) : "";
+  const toText = to ? format(to, "yyyy.MM.dd", { locale: ko }) : "";
   return (
     <div className="bg-card rounded-sm border-t border-b border-border py-8 px-4 mb-6">
       <div className="flex flex-col gap-6">
@@ -28,15 +41,81 @@ const AdminFilterSection: React.FC<AdminFilterSectionProps> = ({
               상신일
             </label>
             <div className="flex items-center gap-[11px]">
-              <div className="relative">
-                <Input className="w-32"></Input>
-                <span className="material-icons-outlined absolute right-2 top-1.5 text-muted-foreground text-base"></span>
-              </div>
+              {/* FROM */}
+              <Popover.Root open={fromOpen} onOpenChange={setFromOpen}>
+                <Popover.Trigger
+                  render={(triggerProps) => (
+                    <div className="relative" {...triggerProps}>
+                      <Input
+                        readOnly
+                        className="w-32 pr-8 cursor-pointer"
+                        placeholder="YYYY.MM.DD"
+                        value={fromText}
+                      />
+                      <span className="material-icons-outlined absolute right-2 top-1.5 text-muted-foreground text-base pointer-events-none">
+                        calendar_today
+                      </span>
+                    </div>
+                  )}
+                />
+
+                <Popover.Portal>
+                  <Popover.Positioner sideOffset={8} align="start">
+                    <Popover.Popup className="z-50 rounded-md border bg-background p-2 shadow-md">
+                      <DayPicker
+                        mode="single"
+                        selected={from}
+                        onSelect={(d) => {
+                          setFrom(d);
+                          setFromOpen(false);
+
+                          // from이 to보다 뒤면 to 초기화
+                          if (d && to && d > to) setTo(undefined);
+                        }}
+                        locale={ko}
+                      />
+                    </Popover.Popup>
+                  </Popover.Positioner>
+                </Popover.Portal>
+              </Popover.Root>
               <span className="text-muted-foreground">~</span>
-              <div className="relative">
-                <Input className="w-32"></Input>
-                <span className="material-icons-outlined absolute right-2 top-1.5 text-muted-foreground text-base"></span>
-              </div>
+              {/* TO */}
+              <Popover.Root open={toOpen} onOpenChange={setToOpen}>
+                <Popover.Trigger
+                  render={(triggerProps) => (
+                    <div className="relative" {...triggerProps}>
+                      <Input
+                        readOnly
+                        className="w-32 pr-8 cursor-pointer"
+                        placeholder="YYYY.MM.DD"
+                        value={toText}
+                        disabled={!from} // from 선택 전엔 비활성화 (UX)
+                      />
+                      <span className="material-icons-outlined absolute right-2 top-1.5 text-muted-foreground text-base pointer-events-none">
+                        calendar_today
+                      </span>
+                    </div>
+                  )}
+                />
+
+                <Popover.Portal>
+                  <Popover.Positioner sideOffset={8} align="start">
+                    <Popover.Popup className="z-50 rounded-md border bg-background p-2 shadow-md">
+                      <DayPicker
+                        mode="single"
+                        selected={to}
+                        onSelect={(d) => {
+                          setTo(d);
+                          setToOpen(false);
+                        }}
+                        // from 이후 날짜만 선택 가능
+                        disabled={from ? { before: from } : undefined}
+                        locale={ko}
+                      />
+                    </Popover.Popup>
+                  </Popover.Positioner>
+                </Popover.Portal>
+              </Popover.Root>
             </div>
           </div>
           <div className="flex items-center flex-1">

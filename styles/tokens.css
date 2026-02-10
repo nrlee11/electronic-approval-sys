@@ -110,8 +110,8 @@
   --primary-hover: oklch(0.48 0.19 263.84);
   --primary-hover-foreground: oklch(0.97 0.014 254.604);
 
-   --disabled: oklch(0.92 0.005 270);
-   --disabled-foreground: oklch(0.55 0.01 270);
+  --disabled: oklch(0.92 0.005 270);
+  --disabled-foreground: oklch(0.55 0.01 270);
 
   /* =========================
    Chrome
@@ -173,7 +173,7 @@
      ========================= */
 
   --background: oklch(0.145 0 0);
-  --background-foreground: oklch(0.985 0 0); 
+  --background-foreground: oklch(0.985 0 0);
 
   --card: oklch(0.18 0.004 260);
   --card-foreground: oklch(0.985 0 0);
@@ -224,8 +224,8 @@
   --primary-hover-dark: oklch(0.44 0.19 263.84);
   --primary-hover-foreground: oklch(0.97 0.014 254.604);
 
-   --disabled: oklch(0.28 0.01 270);
-   --disabled-foreground: oklch(0.58 0.01 270);
+  --disabled: oklch(0.28 0.01 270);
+  --disabled-foreground: oklch(0.58 0.01 270);
 
   /* =========================
      Chrome

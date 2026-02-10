@@ -120,3 +120,43 @@ textarea {
 .stagger-4 {
   animation-delay: 800ms;
 }
+/* ===== react-day-picker selected day (filterSection의 달력)===== */
+
+/* 선택된 날짜 (td 기준) */
+.rdp-caption_label {
+  font-weight: bold;
+  font-size: 1.125rem;
+  padding-left: 1rem;
+}
+.rdp-chevron {
+  fill: var(--brand-blue1) !important;
+}
+.rdp-day.rdp-day_selected > .rdp-day_button {
+  background: transparent;
+  color: #10b981;
+  border: 2px solid #10b981;
+  border-radius: 9999px;
+}
+
+/* hover */
+.rdp-day > .rdp-day_button:hover {
+  background: rgba(96, 145, 199, 0.2);
+  border-radius: 9999px;
+}
+
+/* 오늘 날짜 */
+.rdp-today:not(.rdp-outside) {
+  color: var(--brand-blue1) !important;
+}
+.rdp-day.rdp-day_today > .rdp-day_button {
+  color: #10b981;
+  font-weight: 600;
+}
+
+/* 상단 화살표 */
+.rdp-nav_button {
+  color: var(--brand-blue1) !important;
+}
+.rdp-selected .rdp-day_button {
+  border: 2px solid var(--brand-blue1) !important;
+}
