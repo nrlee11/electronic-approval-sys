@@ -14,7 +14,6 @@ import * as Icons from "@hugeicons/core-free-icons";
 import { format } from "date-fns";
 import { ko } from "date-fns/locale";
 import { DayPicker } from "react-day-picker";
-import "react-day-picker/dist/style.css";
 import { Popover } from "@base-ui/react/popover";
 
 interface FilterSectionProps {

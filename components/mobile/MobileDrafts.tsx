@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import EmptyState from "@/components/EmptyState";
 import { Button } from "@/components/ui/button";
+import FilterModal from "./FilterModal";
 
 const tabs = ["상신한", "완료된", "저장된", "반려된", "반송된", "회수된"];
 
@@ -9,6 +10,7 @@ const MobileDrafts: React.FC<{ initialTab?: string; onBack?: () => void }> = ({
   onBack,
 }) => {
   const [active, setActive] = useState(initialTab || "상신한");
+  const [showFilter, setShowFilter] = useState(false);
 
   useEffect(() => {
     setActive(initialTab || "상신한");
@@ -38,7 +40,7 @@ const MobileDrafts: React.FC<{ initialTab?: string; onBack?: () => void }> = ({
         ))}
       </div>
 
-       <div className="flex items-center justify-between mb-4">
+      <div className="flex items-center justify-between mb-4">
         <button
           onClick={() => {
             /* future: open quick filter */
@@ -48,23 +50,31 @@ const MobileDrafts: React.FC<{ initialTab?: string; onBack?: () => void }> = ({
           총 <span className="text-primary font-bold">1</span>건
         </button>
         <div className="text-sm text-muted-foreground">
-          {/* filter icon placeholder */}
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="opacity-70"
+          <button
+            onClick={() => setShowFilter(true)}
+            className="opacity-70 p-1"
           >
-            <path
-              d="M10 18h4v-2h-4v2zM4 6v2h16V6H4zm3 6h10v-2H7v2z"
-              fill="currentColor"
-            />
-          </svg>
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10 18h4v-2h-4v2zM4 6v2h16V6H4zm3 6h10v-2H7v2z"
+                fill="currentColor"
+              />
+            </svg>
+          </button>
         </div>
       </div>
 
+        <FilterModal
+          open={showFilter}
+          onClose={() => setShowFilter(false)}
+          onApply={() => {}}
+        />
 
       {/* Count + Filters */}
       <div className="mb-4">

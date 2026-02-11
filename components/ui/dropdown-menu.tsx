@@ -25,12 +25,12 @@ function DropdownMenuContent({
   side = "bottom",
   sideOffset = 8,
   className,
+  zIndexClass = "z-50",
   ...props
 }: MenuPrimitive.Popup.Props &
-  Pick<
-    MenuPrimitive.Positioner.Props,
-    "align" | "alignOffset" | "side" | "sideOffset"
-  >) {
+  Pick<MenuPrimitive.Positioner.Props, "align" | "alignOffset" | "side" | "sideOffset"> & {
+    zIndexClass?: string;
+  }) {
   return (
     <MenuPrimitive.Portal>
       <MenuPrimitive.Positioner
@@ -38,7 +38,7 @@ function DropdownMenuContent({
         alignOffset={alignOffset}
         side={side}
         sideOffset={sideOffset}
-        className="isolate z-50 outline-none"
+        className={cn("isolate outline-none", zIndexClass)}
       >
         <MenuPrimitive.Popup
           className={cn(
@@ -46,7 +46,7 @@ function DropdownMenuContent({
             "max-h-[var(--available-height)] w-[var(--anchor-width)] min-w-[var(--anchor-width)] origin-[var(--transform-origin)] overflow-x-hidden overflow-y-auto",
             "data-open:animate-in data-closed:animate-out data-closed:fade-out-0 data-open:fade-in-0 data-closed:zoom-out-95 data-open:zoom-in-95",
             "outline-none",
-            className,
+            className
           )}
           {...props}
         />
@@ -54,6 +54,7 @@ function DropdownMenuContent({
     </MenuPrimitive.Portal>
   );
 }
+
 
 function DropdownMenuGroup({ ...props }: MenuPrimitive.Group.Props) {
   return <MenuPrimitive.Group data-slot="dropdown-menu-group" {...props} />;
