@@ -1,13 +1,15 @@
 {
+  "homepage": "https://nrlee11.github.io/electronic-approval-sys",
   "name": "전자결재-시스템-대시보드",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
+  "dev": "vite",
+  "build": "vite build",
+  "preview": "vite preview",
+  "deploy": "gh-pages -d dist -r https://github.com/nrlee11/electronic-approval-sys.git"
+},
   "dependencies": {
     "@base-ui/react": "^1.0.0",
     "@hugeicons/core-free-icons": "^3.1.1",
